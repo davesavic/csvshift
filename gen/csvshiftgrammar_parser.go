@@ -1,11 +1,11 @@
-// Code generated from /Users/david.savic/Repositories/10-percent-days/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from /home/sav/Development/Go/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
 
 package parser // CsvShiftGrammar
 
 import (
 	"fmt"
 	"strconv"
-  "sync"
+	"sync"
 
 	"github.com/antlr4-go/antlr"
 )
@@ -15,79 +15,84 @@ var _ = fmt.Printf
 var _ = strconv.Itoa
 var _ = sync.Once{}
 
-
 type CsvShiftGrammarParser struct {
 	*antlr.BaseParser
 }
 
 var csvshiftgrammarParserStaticData struct {
-  once                   sync.Once
-  serializedATN          []int32
-  literalNames           []string
-  symbolicNames          []string
-  ruleNames              []string
-  predictionContextCache *antlr.PredictionContextCache
-  atn                    *antlr.ATN
-  decisionToDFA          []*antlr.DFA
+	once                   sync.Once
+	serializedATN          []int32
+	literalNames           []string
+	symbolicNames          []string
+	ruleNames              []string
+	predictionContextCache *antlr.PredictionContextCache
+	atn                    *antlr.ATN
+	decisionToDFA          []*antlr.DFA
 }
 
 func csvshiftgrammarParserInit() {
-  staticData := &csvshiftgrammarParserStaticData
-  staticData.literalNames = []string{
-    "", "'Input Columns'", "'Output Columns'", "'Column'", "'Columns'", 
-    "'-> Trim'", "'-> Replace'", "'-> Combine with'", "'with'", "'as'", 
-    "','", "'\"'", "'->'",
-  }
-  staticData.symbolicNames = []string{
-    "", "INPUT", "OUTPUT", "COLUMN", "COLUMNS", "TRIM", "REPLACE", "COMBINE", 
-    "WITH", "AS", "COMMA", "QUOTE", "ARROW", "IDENTIFIER", "STRING", "WS",
-  }
-  staticData.ruleNames = []string{
-    "csvTransform", "inputSection", "outputSection", "columnModifierSection", 
-    "singleColumnModifierSection", "multipleColumnModifierSection", "singleColumnTransformation", 
-    "multipleColumnTransformation", "columns",
-  }
-  staticData.predictionContextCache = antlr.NewPredictionContextCache()
-  staticData.serializedATN = []int32{
-	4, 1, 15, 79, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7, 
-	4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 1, 0, 1, 0, 5, 0, 21, 
-	8, 0, 10, 0, 12, 0, 24, 9, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 
-	1, 2, 1, 2, 1, 3, 1, 3, 3, 3, 37, 8, 3, 1, 4, 1, 4, 1, 4, 4, 4, 42, 8, 
-	4, 11, 4, 12, 4, 43, 1, 5, 1, 5, 1, 5, 4, 5, 49, 8, 5, 11, 5, 12, 5, 50, 
-	1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 3, 6, 58, 8, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1, 
-	7, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 69, 8, 7, 1, 8, 1, 8, 1, 8, 5, 8, 74, 
-	8, 8, 10, 8, 12, 8, 77, 9, 8, 1, 8, 0, 0, 9, 0, 2, 4, 6, 8, 10, 12, 14, 
-	16, 0, 0, 77, 0, 18, 1, 0, 0, 0, 2, 28, 1, 0, 0, 0, 4, 31, 1, 0, 0, 0, 
-	6, 36, 1, 0, 0, 0, 8, 38, 1, 0, 0, 0, 10, 45, 1, 0, 0, 0, 12, 57, 1, 0, 
-	0, 0, 14, 68, 1, 0, 0, 0, 16, 70, 1, 0, 0, 0, 18, 22, 3, 2, 1, 0, 19, 21, 
-	3, 6, 3, 0, 20, 19, 1, 0, 0, 0, 21, 24, 1, 0, 0, 0, 22, 20, 1, 0, 0, 0, 
-	22, 23, 1, 0, 0, 0, 23, 25, 1, 0, 0, 0, 24, 22, 1, 0, 0, 0, 25, 26, 3, 
-	4, 2, 0, 26, 27, 5, 0, 0, 1, 27, 1, 1, 0, 0, 0, 28, 29, 5, 1, 0, 0, 29, 
-	30, 3, 16, 8, 0, 30, 3, 1, 0, 0, 0, 31, 32, 5, 2, 0, 0, 32, 33, 3, 16, 
-	8, 0, 33, 5, 1, 0, 0, 0, 34, 37, 3, 8, 4, 0, 35, 37, 3, 10, 5, 0, 36, 34, 
-	1, 0, 0, 0, 36, 35, 1, 0, 0, 0, 37, 7, 1, 0, 0, 0, 38, 39, 5, 3, 0, 0, 
-	39, 41, 5, 13, 0, 0, 40, 42, 3, 12, 6, 0, 41, 40, 1, 0, 0, 0, 42, 43, 1, 
-	0, 0, 0, 43, 41, 1, 0, 0, 0, 43, 44, 1, 0, 0, 0, 44, 9, 1, 0, 0, 0, 45, 
-	46, 5, 4, 0, 0, 46, 48, 3, 16, 8, 0, 47, 49, 3, 14, 7, 0, 48, 47, 1, 0, 
-	0, 0, 49, 50, 1, 0, 0, 0, 50, 48, 1, 0, 0, 0, 50, 51, 1, 0, 0, 0, 51, 11, 
-	1, 0, 0, 0, 52, 58, 5, 5, 0, 0, 53, 54, 5, 6, 0, 0, 54, 55, 5, 14, 0, 0, 
-	55, 56, 5, 8, 0, 0, 56, 58, 5, 14, 0, 0, 57, 52, 1, 0, 0, 0, 57, 53, 1, 
-	0, 0, 0, 58, 13, 1, 0, 0, 0, 59, 69, 5, 5, 0, 0, 60, 61, 5, 6, 0, 0, 61, 
-	62, 5, 14, 0, 0, 62, 63, 5, 8, 0, 0, 63, 69, 5, 14, 0, 0, 64, 65, 5, 7, 
-	0, 0, 65, 66, 5, 14, 0, 0, 66, 67, 5, 9, 0, 0, 67, 69, 5, 13, 0, 0, 68, 
-	59, 1, 0, 0, 0, 68, 60, 1, 0, 0, 0, 68, 64, 1, 0, 0, 0, 69, 15, 1, 0, 0, 
-	0, 70, 75, 5, 13, 0, 0, 71, 72, 5, 10, 0, 0, 72, 74, 5, 13, 0, 0, 73, 71, 
-	1, 0, 0, 0, 74, 77, 1, 0, 0, 0, 75, 73, 1, 0, 0, 0, 75, 76, 1, 0, 0, 0, 
-	76, 17, 1, 0, 0, 0, 77, 75, 1, 0, 0, 0, 7, 22, 36, 43, 50, 57, 68, 75,
-}
-  deserializer := antlr.NewATNDeserializer(nil)
-  staticData.atn = deserializer.Deserialize(staticData.serializedATN)
-  atn := staticData.atn
-  staticData.decisionToDFA = make([]*antlr.DFA, len(atn.DecisionToState))
-  decisionToDFA := staticData.decisionToDFA
-  for index, state := range atn.DecisionToState {
-    decisionToDFA[index] = antlr.NewDFA(state, index)
-  }
+	staticData := &csvshiftgrammarParserStaticData
+	staticData.literalNames = []string{
+		"", "'Input Columns'", "'Output Columns'", "'Column'", "'Columns'",
+		"'-> Trim'", "'-> Replace'", "'-> Join with'", "'-> ToLower'", "'-> ToUpper'",
+		"'-> Split on'", "'with'", "'as'", "','", "'\"'", "'->'",
+	}
+	staticData.symbolicNames = []string{
+		"", "INPUT", "OUTPUT", "COLUMN", "COLUMNS", "TRIM", "REPLACE", "JOIN",
+		"LOWER", "UPPER", "SPLIT", "WITH", "AS", "COMMA", "QUOTE", "ARROW",
+		"IDENTIFIER", "STRING", "WS",
+	}
+	staticData.ruleNames = []string{
+		"csvTransform", "inputSection", "outputSection", "columnModifierSection",
+		"singleColumnModifierSection", "multipleColumnModifierSection", "singleColumnTransformation",
+		"multipleColumnTransformation", "columns",
+	}
+	staticData.predictionContextCache = antlr.NewPredictionContextCache()
+	staticData.serializedATN = []int32{
+		4, 1, 18, 87, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 1, 0, 1, 0, 5, 0, 21,
+		8, 0, 10, 0, 12, 0, 24, 9, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2,
+		1, 2, 1, 2, 1, 3, 1, 3, 3, 3, 37, 8, 3, 1, 4, 1, 4, 1, 4, 4, 4, 42, 8,
+		4, 11, 4, 12, 4, 43, 1, 5, 1, 5, 1, 5, 4, 5, 49, 8, 5, 11, 5, 12, 5, 50,
+		1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 3, 6,
+		64, 8, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1,
+		7, 3, 7, 77, 8, 7, 1, 8, 1, 8, 1, 8, 5, 8, 82, 8, 8, 10, 8, 12, 8, 85,
+		9, 8, 1, 8, 0, 0, 9, 0, 2, 4, 6, 8, 10, 12, 14, 16, 0, 0, 90, 0, 18, 1,
+		0, 0, 0, 2, 28, 1, 0, 0, 0, 4, 31, 1, 0, 0, 0, 6, 36, 1, 0, 0, 0, 8, 38,
+		1, 0, 0, 0, 10, 45, 1, 0, 0, 0, 12, 63, 1, 0, 0, 0, 14, 76, 1, 0, 0, 0,
+		16, 78, 1, 0, 0, 0, 18, 22, 3, 2, 1, 0, 19, 21, 3, 6, 3, 0, 20, 19, 1,
+		0, 0, 0, 21, 24, 1, 0, 0, 0, 22, 20, 1, 0, 0, 0, 22, 23, 1, 0, 0, 0, 23,
+		25, 1, 0, 0, 0, 24, 22, 1, 0, 0, 0, 25, 26, 3, 4, 2, 0, 26, 27, 5, 0, 0,
+		1, 27, 1, 1, 0, 0, 0, 28, 29, 5, 1, 0, 0, 29, 30, 3, 16, 8, 0, 30, 3, 1,
+		0, 0, 0, 31, 32, 5, 2, 0, 0, 32, 33, 3, 16, 8, 0, 33, 5, 1, 0, 0, 0, 34,
+		37, 3, 8, 4, 0, 35, 37, 3, 10, 5, 0, 36, 34, 1, 0, 0, 0, 36, 35, 1, 0,
+		0, 0, 37, 7, 1, 0, 0, 0, 38, 39, 5, 3, 0, 0, 39, 41, 5, 16, 0, 0, 40, 42,
+		3, 12, 6, 0, 41, 40, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0,
+		43, 44, 1, 0, 0, 0, 44, 9, 1, 0, 0, 0, 45, 46, 5, 4, 0, 0, 46, 48, 3, 16,
+		8, 0, 47, 49, 3, 14, 7, 0, 48, 47, 1, 0, 0, 0, 49, 50, 1, 0, 0, 0, 50,
+		48, 1, 0, 0, 0, 50, 51, 1, 0, 0, 0, 51, 11, 1, 0, 0, 0, 52, 64, 5, 5, 0,
+		0, 53, 54, 5, 6, 0, 0, 54, 55, 5, 17, 0, 0, 55, 56, 5, 11, 0, 0, 56, 64,
+		5, 17, 0, 0, 57, 64, 5, 8, 0, 0, 58, 64, 5, 9, 0, 0, 59, 60, 5, 10, 0,
+		0, 60, 61, 5, 17, 0, 0, 61, 62, 5, 12, 0, 0, 62, 64, 3, 16, 8, 0, 63, 52,
+		1, 0, 0, 0, 63, 53, 1, 0, 0, 0, 63, 57, 1, 0, 0, 0, 63, 58, 1, 0, 0, 0,
+		63, 59, 1, 0, 0, 0, 64, 13, 1, 0, 0, 0, 65, 77, 5, 5, 0, 0, 66, 67, 5,
+		6, 0, 0, 67, 68, 5, 17, 0, 0, 68, 69, 5, 11, 0, 0, 69, 77, 5, 17, 0, 0,
+		70, 71, 5, 7, 0, 0, 71, 72, 5, 17, 0, 0, 72, 73, 5, 12, 0, 0, 73, 77, 5,
+		16, 0, 0, 74, 77, 5, 8, 0, 0, 75, 77, 5, 9, 0, 0, 76, 65, 1, 0, 0, 0, 76,
+		66, 1, 0, 0, 0, 76, 70, 1, 0, 0, 0, 76, 74, 1, 0, 0, 0, 76, 75, 1, 0, 0,
+		0, 77, 15, 1, 0, 0, 0, 78, 83, 5, 16, 0, 0, 79, 80, 5, 13, 0, 0, 80, 82,
+		5, 16, 0, 0, 81, 79, 1, 0, 0, 0, 82, 85, 1, 0, 0, 0, 83, 81, 1, 0, 0, 0,
+		83, 84, 1, 0, 0, 0, 84, 17, 1, 0, 0, 0, 85, 83, 1, 0, 0, 0, 7, 22, 36,
+		43, 50, 63, 76, 83,
+	}
+	deserializer := antlr.NewATNDeserializer(nil)
+	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
+	atn := staticData.atn
+	staticData.decisionToDFA = make([]*antlr.DFA, len(atn.DecisionToState))
+	decisionToDFA := staticData.decisionToDFA
+	for index, state := range atn.DecisionToState {
+		decisionToDFA[index] = antlr.NewDFA(state, index)
+	}
 }
 
 // CsvShiftGrammarParserInit initializes any static state used to implement CsvShiftGrammarParser. By default the
@@ -95,8 +100,8 @@ func csvshiftgrammarParserInit() {
 // NewCsvShiftGrammarParser(). You can call this function if you wish to initialize the static state ahead
 // of time.
 func CsvShiftGrammarParserInit() {
-  staticData := &csvshiftgrammarParserStaticData
-  staticData.once.Do(csvshiftgrammarParserInit)
+	staticData := &csvshiftgrammarParserStaticData
+	staticData.once.Do(csvshiftgrammarParserInit)
 }
 
 // NewCsvShiftGrammarParser produces a new parser instance for the optional input antlr.TokenStream.
@@ -104,7 +109,7 @@ func NewCsvShiftGrammarParser(input antlr.TokenStream) *CsvShiftGrammarParser {
 	CsvShiftGrammarParserInit()
 	this := new(CsvShiftGrammarParser)
 	this.BaseParser = antlr.NewBaseParser(input)
-  staticData := &csvshiftgrammarParserStaticData
+	staticData := &csvshiftgrammarParserStaticData
 	this.Interpreter = antlr.NewParserATNSimulator(this, staticData.atn, staticData.decisionToDFA, staticData.predictionContextCache)
 	this.RuleNames = staticData.ruleNames
 	this.LiteralNames = staticData.literalNames
@@ -114,38 +119,40 @@ func NewCsvShiftGrammarParser(input antlr.TokenStream) *CsvShiftGrammarParser {
 	return this
 }
 
-
 // CsvShiftGrammarParser tokens.
 const (
-	CsvShiftGrammarParserEOF = antlr.TokenEOF
-	CsvShiftGrammarParserINPUT = 1
-	CsvShiftGrammarParserOUTPUT = 2
-	CsvShiftGrammarParserCOLUMN = 3
-	CsvShiftGrammarParserCOLUMNS = 4
-	CsvShiftGrammarParserTRIM = 5
-	CsvShiftGrammarParserREPLACE = 6
-	CsvShiftGrammarParserCOMBINE = 7
-	CsvShiftGrammarParserWITH = 8
-	CsvShiftGrammarParserAS = 9
-	CsvShiftGrammarParserCOMMA = 10
-	CsvShiftGrammarParserQUOTE = 11
-	CsvShiftGrammarParserARROW = 12
-	CsvShiftGrammarParserIDENTIFIER = 13
-	CsvShiftGrammarParserSTRING = 14
-	CsvShiftGrammarParserWS = 15
+	CsvShiftGrammarParserEOF        = antlr.TokenEOF
+	CsvShiftGrammarParserINPUT      = 1
+	CsvShiftGrammarParserOUTPUT     = 2
+	CsvShiftGrammarParserCOLUMN     = 3
+	CsvShiftGrammarParserCOLUMNS    = 4
+	CsvShiftGrammarParserTRIM       = 5
+	CsvShiftGrammarParserREPLACE    = 6
+	CsvShiftGrammarParserJOIN       = 7
+	CsvShiftGrammarParserLOWER      = 8
+	CsvShiftGrammarParserUPPER      = 9
+	CsvShiftGrammarParserSPLIT      = 10
+	CsvShiftGrammarParserWITH       = 11
+	CsvShiftGrammarParserAS         = 12
+	CsvShiftGrammarParserCOMMA      = 13
+	CsvShiftGrammarParserQUOTE      = 14
+	CsvShiftGrammarParserARROW      = 15
+	CsvShiftGrammarParserIDENTIFIER = 16
+	CsvShiftGrammarParserSTRING     = 17
+	CsvShiftGrammarParserWS         = 18
 )
 
 // CsvShiftGrammarParser rules.
 const (
-	CsvShiftGrammarParserRULE_csvTransform = 0
-	CsvShiftGrammarParserRULE_inputSection = 1
-	CsvShiftGrammarParserRULE_outputSection = 2
-	CsvShiftGrammarParserRULE_columnModifierSection = 3
-	CsvShiftGrammarParserRULE_singleColumnModifierSection = 4
+	CsvShiftGrammarParserRULE_csvTransform                  = 0
+	CsvShiftGrammarParserRULE_inputSection                  = 1
+	CsvShiftGrammarParserRULE_outputSection                 = 2
+	CsvShiftGrammarParserRULE_columnModifierSection         = 3
+	CsvShiftGrammarParserRULE_singleColumnModifierSection   = 4
 	CsvShiftGrammarParserRULE_multipleColumnModifierSection = 5
-	CsvShiftGrammarParserRULE_singleColumnTransformation = 6
-	CsvShiftGrammarParserRULE_multipleColumnTransformation = 7
-	CsvShiftGrammarParserRULE_columns = 8
+	CsvShiftGrammarParserRULE_singleColumnTransformation    = 6
+	CsvShiftGrammarParserRULE_multipleColumnTransformation  = 7
+	CsvShiftGrammarParserRULE_columns                       = 8
 )
 
 // ICsvTransformContext is an interface to support dynamic dispatch.
@@ -194,10 +201,10 @@ func NewCsvTransformContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 func (s *CsvTransformContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *CsvTransformContext) InputSection() IInputSectionContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IInputSectionContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -210,10 +217,10 @@ func (s *CsvTransformContext) InputSection() IInputSectionContext {
 }
 
 func (s *CsvTransformContext) OutputSection() IOutputSectionContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IOutputSectionContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -251,12 +258,12 @@ func (s *CsvTransformContext) AllColumnModifierSection() []IColumnModifierSectio
 }
 
 func (s *CsvTransformContext) ColumnModifierSection(i int) IColumnModifierSectionContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IColumnModifierSectionContext); ok {
 			if j == i {
-				t = ctx.(antlr.RuleContext);
+				t = ctx.(antlr.RuleContext)
 				break
 			}
 			j++
@@ -278,7 +285,6 @@ func (s *CsvTransformContext) ToStringTree(ruleNames []string, recog antlr.Recog
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *CsvTransformContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterCsvTransform(s)
@@ -291,9 +297,6 @@ func (s *CsvTransformContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-
-
-
 func (p *CsvShiftGrammarParser) CsvTransform() (localctx ICsvTransformContext) {
 	this := p
 	_ = this
@@ -301,7 +304,6 @@ func (p *CsvShiftGrammarParser) CsvTransform() (localctx ICsvTransformContext) {
 	localctx = NewCsvTransformContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, CsvShiftGrammarParserRULE_csvTransform)
 	var _la int
-
 
 	defer func() {
 		p.ExitRule()
@@ -328,13 +330,11 @@ func (p *CsvShiftGrammarParser) CsvTransform() (localctx ICsvTransformContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-
 	for _la == CsvShiftGrammarParserCOLUMN || _la == CsvShiftGrammarParserCOLUMNS {
 		{
 			p.SetState(19)
 			p.ColumnModifierSection()
 		}
-
 
 		p.SetState(24)
 		p.GetErrorHandler().Sync(p)
@@ -349,11 +349,8 @@ func (p *CsvShiftGrammarParser) CsvTransform() (localctx ICsvTransformContext) {
 		p.Match(CsvShiftGrammarParserEOF)
 	}
 
-
-
 	return localctx
 }
-
 
 // IInputSectionContext is an interface to support dynamic dispatch.
 type IInputSectionContext interface {
@@ -402,10 +399,10 @@ func (s *InputSectionContext) INPUT() antlr.TerminalNode {
 }
 
 func (s *InputSectionContext) Columns() IColumnsContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IColumnsContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -425,7 +422,6 @@ func (s *InputSectionContext) ToStringTree(ruleNames []string, recog antlr.Recog
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *InputSectionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterInputSection(s)
@@ -437,9 +433,6 @@ func (s *InputSectionContext) ExitRule(listener antlr.ParseTreeListener) {
 		listenerT.ExitInputSection(s)
 	}
 }
-
-
-
 
 func (p *CsvShiftGrammarParser) InputSection() (localctx IInputSectionContext) {
 	this := p
@@ -474,11 +467,8 @@ func (p *CsvShiftGrammarParser) InputSection() (localctx IInputSectionContext) {
 		p.Columns()
 	}
 
-
-
 	return localctx
 }
-
 
 // IOutputSectionContext is an interface to support dynamic dispatch.
 type IOutputSectionContext interface {
@@ -527,10 +517,10 @@ func (s *OutputSectionContext) OUTPUT() antlr.TerminalNode {
 }
 
 func (s *OutputSectionContext) Columns() IColumnsContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IColumnsContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -550,7 +540,6 @@ func (s *OutputSectionContext) ToStringTree(ruleNames []string, recog antlr.Reco
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *OutputSectionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterOutputSection(s)
@@ -562,9 +551,6 @@ func (s *OutputSectionContext) ExitRule(listener antlr.ParseTreeListener) {
 		listenerT.ExitOutputSection(s)
 	}
 }
-
-
-
 
 func (p *CsvShiftGrammarParser) OutputSection() (localctx IOutputSectionContext) {
 	this := p
@@ -599,11 +585,8 @@ func (p *CsvShiftGrammarParser) OutputSection() (localctx IOutputSectionContext)
 		p.Columns()
 	}
 
-
-
 	return localctx
 }
-
 
 // IColumnModifierSectionContext is an interface to support dynamic dispatch.
 type IColumnModifierSectionContext interface {
@@ -648,10 +631,10 @@ func NewColumnModifierSectionContext(parser antlr.Parser, parent antlr.ParserRul
 func (s *ColumnModifierSectionContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *ColumnModifierSectionContext) SingleColumnModifierSection() ISingleColumnModifierSectionContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(ISingleColumnModifierSectionContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -664,10 +647,10 @@ func (s *ColumnModifierSectionContext) SingleColumnModifierSection() ISingleColu
 }
 
 func (s *ColumnModifierSectionContext) MultipleColumnModifierSection() IMultipleColumnModifierSectionContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IMultipleColumnModifierSectionContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -687,7 +670,6 @@ func (s *ColumnModifierSectionContext) ToStringTree(ruleNames []string, recog an
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *ColumnModifierSectionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterColumnModifierSection(s)
@@ -699,9 +681,6 @@ func (s *ColumnModifierSectionContext) ExitRule(listener antlr.ParseTreeListener
 		listenerT.ExitColumnModifierSection(s)
 	}
 }
-
-
-
 
 func (p *CsvShiftGrammarParser) ColumnModifierSection() (localctx IColumnModifierSectionContext) {
 	this := p
@@ -737,7 +716,6 @@ func (p *CsvShiftGrammarParser) ColumnModifierSection() (localctx IColumnModifie
 			p.SingleColumnModifierSection()
 		}
 
-
 	case CsvShiftGrammarParserCOLUMNS:
 		p.EnterOuterAlt(localctx, 2)
 		{
@@ -745,16 +723,12 @@ func (p *CsvShiftGrammarParser) ColumnModifierSection() (localctx IColumnModifie
 			p.MultipleColumnModifierSection()
 		}
 
-
-
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
-
 	return localctx
 }
-
 
 // ISingleColumnModifierSectionContext is an interface to support dynamic dispatch.
 type ISingleColumnModifierSectionContext interface {
@@ -830,12 +804,12 @@ func (s *SingleColumnModifierSectionContext) AllSingleColumnTransformation() []I
 }
 
 func (s *SingleColumnModifierSectionContext) SingleColumnTransformation(i int) ISingleColumnTransformationContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(ISingleColumnTransformationContext); ok {
 			if j == i {
-				t = ctx.(antlr.RuleContext);
+				t = ctx.(antlr.RuleContext)
 				break
 			}
 			j++
@@ -857,7 +831,6 @@ func (s *SingleColumnModifierSectionContext) ToStringTree(ruleNames []string, re
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *SingleColumnModifierSectionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterSingleColumnModifierSection(s)
@@ -870,9 +843,6 @@ func (s *SingleColumnModifierSectionContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
-
-
-
 func (p *CsvShiftGrammarParser) SingleColumnModifierSection() (localctx ISingleColumnModifierSectionContext) {
 	this := p
 	_ = this
@@ -880,7 +850,6 @@ func (p *CsvShiftGrammarParser) SingleColumnModifierSection() (localctx ISingleC
 	localctx = NewSingleColumnModifierSectionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, CsvShiftGrammarParserRULE_singleColumnModifierSection)
 	var _la int
-
 
 	defer func() {
 		p.ExitRule()
@@ -911,24 +880,19 @@ func (p *CsvShiftGrammarParser) SingleColumnModifierSection() (localctx ISingleC
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-
-	for ok := true; ok; ok = _la == CsvShiftGrammarParserTRIM || _la == CsvShiftGrammarParserREPLACE {
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1888) != 0) {
 		{
 			p.SetState(40)
 			p.SingleColumnTransformation()
 		}
-
 
 		p.SetState(43)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 
-
-
 	return localctx
 }
-
 
 // IMultipleColumnModifierSectionContext is an interface to support dynamic dispatch.
 type IMultipleColumnModifierSectionContext interface {
@@ -979,10 +943,10 @@ func (s *MultipleColumnModifierSectionContext) COLUMNS() antlr.TerminalNode {
 }
 
 func (s *MultipleColumnModifierSectionContext) Columns() IColumnsContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IColumnsContext); ok {
-			t = ctx.(antlr.RuleContext);
+			t = ctx.(antlr.RuleContext)
 			break
 		}
 	}
@@ -1016,12 +980,12 @@ func (s *MultipleColumnModifierSectionContext) AllMultipleColumnTransformation()
 }
 
 func (s *MultipleColumnModifierSectionContext) MultipleColumnTransformation(i int) IMultipleColumnTransformationContext {
-	var t antlr.RuleContext;
+	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IMultipleColumnTransformationContext); ok {
 			if j == i {
-				t = ctx.(antlr.RuleContext);
+				t = ctx.(antlr.RuleContext)
 				break
 			}
 			j++
@@ -1043,7 +1007,6 @@ func (s *MultipleColumnModifierSectionContext) ToStringTree(ruleNames []string, 
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *MultipleColumnModifierSectionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterMultipleColumnModifierSection(s)
@@ -1056,9 +1019,6 @@ func (s *MultipleColumnModifierSectionContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
-
-
-
 func (p *CsvShiftGrammarParser) MultipleColumnModifierSection() (localctx IMultipleColumnModifierSectionContext) {
 	this := p
 	_ = this
@@ -1066,7 +1026,6 @@ func (p *CsvShiftGrammarParser) MultipleColumnModifierSection() (localctx IMulti
 	localctx = NewMultipleColumnModifierSectionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, CsvShiftGrammarParserRULE_multipleColumnModifierSection)
 	var _la int
-
 
 	defer func() {
 		p.ExitRule()
@@ -1097,24 +1056,19 @@ func (p *CsvShiftGrammarParser) MultipleColumnModifierSection() (localctx IMulti
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-
-	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1) << _la) & 224) != 0) {
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&992) != 0) {
 		{
 			p.SetState(47)
 			p.MultipleColumnTransformation()
 		}
-
 
 		p.SetState(50)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 
-
-
 	return localctx
 }
-
 
 // ISingleColumnTransformationContext is an interface to support dynamic dispatch.
 type ISingleColumnTransformationContext interface {
@@ -1129,6 +1083,11 @@ type ISingleColumnTransformationContext interface {
 	AllSTRING() []antlr.TerminalNode
 	STRING(i int) antlr.TerminalNode
 	WITH() antlr.TerminalNode
+	LOWER() antlr.TerminalNode
+	UPPER() antlr.TerminalNode
+	SPLIT() antlr.TerminalNode
+	AS() antlr.TerminalNode
+	Columns() IColumnsContext
 
 	// IsSingleColumnTransformationContext differentiates from other interfaces.
 	IsSingleColumnTransformationContext()
@@ -1181,6 +1140,38 @@ func (s *SingleColumnTransformationContext) WITH() antlr.TerminalNode {
 	return s.GetToken(CsvShiftGrammarParserWITH, 0)
 }
 
+func (s *SingleColumnTransformationContext) LOWER() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserLOWER, 0)
+}
+
+func (s *SingleColumnTransformationContext) UPPER() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserUPPER, 0)
+}
+
+func (s *SingleColumnTransformationContext) SPLIT() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserSPLIT, 0)
+}
+
+func (s *SingleColumnTransformationContext) AS() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserAS, 0)
+}
+
+func (s *SingleColumnTransformationContext) Columns() IColumnsContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IColumnsContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IColumnsContext)
+}
+
 func (s *SingleColumnTransformationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -1188,7 +1179,6 @@ func (s *SingleColumnTransformationContext) GetRuleContext() antlr.RuleContext {
 func (s *SingleColumnTransformationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
-
 
 func (s *SingleColumnTransformationContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
@@ -1201,9 +1191,6 @@ func (s *SingleColumnTransformationContext) ExitRule(listener antlr.ParseTreeLis
 		listenerT.ExitSingleColumnTransformation(s)
 	}
 }
-
-
-
 
 func (p *CsvShiftGrammarParser) SingleColumnTransformation() (localctx ISingleColumnTransformationContext) {
 	this := p
@@ -1228,7 +1215,7 @@ func (p *CsvShiftGrammarParser) SingleColumnTransformation() (localctx ISingleCo
 		}
 	}()
 
-	p.SetState(57)
+	p.SetState(63)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -1238,7 +1225,6 @@ func (p *CsvShiftGrammarParser) SingleColumnTransformation() (localctx ISingleCo
 			p.SetState(52)
 			p.Match(CsvShiftGrammarParserTRIM)
 		}
-
 
 	case CsvShiftGrammarParserREPLACE:
 		p.EnterOuterAlt(localctx, 2)
@@ -1259,16 +1245,45 @@ func (p *CsvShiftGrammarParser) SingleColumnTransformation() (localctx ISingleCo
 			p.Match(CsvShiftGrammarParserSTRING)
 		}
 
+	case CsvShiftGrammarParserLOWER:
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(57)
+			p.Match(CsvShiftGrammarParserLOWER)
+		}
 
+	case CsvShiftGrammarParserUPPER:
+		p.EnterOuterAlt(localctx, 4)
+		{
+			p.SetState(58)
+			p.Match(CsvShiftGrammarParserUPPER)
+		}
+
+	case CsvShiftGrammarParserSPLIT:
+		p.EnterOuterAlt(localctx, 5)
+		{
+			p.SetState(59)
+			p.Match(CsvShiftGrammarParserSPLIT)
+		}
+		{
+			p.SetState(60)
+			p.Match(CsvShiftGrammarParserSTRING)
+		}
+		{
+			p.SetState(61)
+			p.Match(CsvShiftGrammarParserAS)
+		}
+		{
+			p.SetState(62)
+			p.Columns()
+		}
 
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
-
 	return localctx
 }
-
 
 // IMultipleColumnTransformationContext is an interface to support dynamic dispatch.
 type IMultipleColumnTransformationContext interface {
@@ -1283,9 +1298,11 @@ type IMultipleColumnTransformationContext interface {
 	AllSTRING() []antlr.TerminalNode
 	STRING(i int) antlr.TerminalNode
 	WITH() antlr.TerminalNode
-	COMBINE() antlr.TerminalNode
+	JOIN() antlr.TerminalNode
 	AS() antlr.TerminalNode
 	IDENTIFIER() antlr.TerminalNode
+	LOWER() antlr.TerminalNode
+	UPPER() antlr.TerminalNode
 
 	// IsMultipleColumnTransformationContext differentiates from other interfaces.
 	IsMultipleColumnTransformationContext()
@@ -1338,8 +1355,8 @@ func (s *MultipleColumnTransformationContext) WITH() antlr.TerminalNode {
 	return s.GetToken(CsvShiftGrammarParserWITH, 0)
 }
 
-func (s *MultipleColumnTransformationContext) COMBINE() antlr.TerminalNode {
-	return s.GetToken(CsvShiftGrammarParserCOMBINE, 0)
+func (s *MultipleColumnTransformationContext) JOIN() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserJOIN, 0)
 }
 
 func (s *MultipleColumnTransformationContext) AS() antlr.TerminalNode {
@@ -1350,6 +1367,14 @@ func (s *MultipleColumnTransformationContext) IDENTIFIER() antlr.TerminalNode {
 	return s.GetToken(CsvShiftGrammarParserIDENTIFIER, 0)
 }
 
+func (s *MultipleColumnTransformationContext) LOWER() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserLOWER, 0)
+}
+
+func (s *MultipleColumnTransformationContext) UPPER() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserUPPER, 0)
+}
+
 func (s *MultipleColumnTransformationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -1357,7 +1382,6 @@ func (s *MultipleColumnTransformationContext) GetRuleContext() antlr.RuleContext
 func (s *MultipleColumnTransformationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
-
 
 func (s *MultipleColumnTransformationContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
@@ -1370,9 +1394,6 @@ func (s *MultipleColumnTransformationContext) ExitRule(listener antlr.ParseTreeL
 		listenerT.ExitMultipleColumnTransformation(s)
 	}
 }
-
-
-
 
 func (p *CsvShiftGrammarParser) MultipleColumnTransformation() (localctx IMultipleColumnTransformationContext) {
 	this := p
@@ -1397,67 +1418,75 @@ func (p *CsvShiftGrammarParser) MultipleColumnTransformation() (localctx IMultip
 		}
 	}()
 
-	p.SetState(68)
+	p.SetState(76)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case CsvShiftGrammarParserTRIM:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(59)
+			p.SetState(65)
 			p.Match(CsvShiftGrammarParserTRIM)
 		}
-
 
 	case CsvShiftGrammarParserREPLACE:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(60)
+			p.SetState(66)
 			p.Match(CsvShiftGrammarParserREPLACE)
 		}
 		{
-			p.SetState(61)
+			p.SetState(67)
 			p.Match(CsvShiftGrammarParserSTRING)
 		}
 		{
-			p.SetState(62)
+			p.SetState(68)
 			p.Match(CsvShiftGrammarParserWITH)
 		}
 		{
-			p.SetState(63)
+			p.SetState(69)
 			p.Match(CsvShiftGrammarParserSTRING)
 		}
 
-
-	case CsvShiftGrammarParserCOMBINE:
+	case CsvShiftGrammarParserJOIN:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(64)
-			p.Match(CsvShiftGrammarParserCOMBINE)
+			p.SetState(70)
+			p.Match(CsvShiftGrammarParserJOIN)
 		}
 		{
-			p.SetState(65)
+			p.SetState(71)
 			p.Match(CsvShiftGrammarParserSTRING)
 		}
 		{
-			p.SetState(66)
+			p.SetState(72)
 			p.Match(CsvShiftGrammarParserAS)
 		}
 		{
-			p.SetState(67)
+			p.SetState(73)
 			p.Match(CsvShiftGrammarParserIDENTIFIER)
 		}
 
+	case CsvShiftGrammarParserLOWER:
+		p.EnterOuterAlt(localctx, 4)
+		{
+			p.SetState(74)
+			p.Match(CsvShiftGrammarParserLOWER)
+		}
 
+	case CsvShiftGrammarParserUPPER:
+		p.EnterOuterAlt(localctx, 5)
+		{
+			p.SetState(75)
+			p.Match(CsvShiftGrammarParserUPPER)
+		}
 
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
-
 	return localctx
 }
-
 
 // IColumnsContext is an interface to support dynamic dispatch.
 type IColumnsContext interface {
@@ -1527,7 +1556,6 @@ func (s *ColumnsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-
 func (s *ColumnsContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CsvShiftGrammarListener); ok {
 		listenerT.EnterColumns(s)
@@ -1540,9 +1568,6 @@ func (s *ColumnsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-
-
-
 func (p *CsvShiftGrammarParser) Columns() (localctx IColumnsContext) {
 	this := p
 	_ = this
@@ -1550,7 +1575,6 @@ func (p *CsvShiftGrammarParser) Columns() (localctx IColumnsContext) {
 	localctx = NewColumnsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 16, CsvShiftGrammarParserRULE_columns)
 	var _la int
-
 
 	defer func() {
 		p.ExitRule()
@@ -1570,33 +1594,27 @@ func (p *CsvShiftGrammarParser) Columns() (localctx IColumnsContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(70)
+		p.SetState(78)
 		p.Match(CsvShiftGrammarParserIDENTIFIER)
 	}
-	p.SetState(75)
+	p.SetState(83)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-
 	for _la == CsvShiftGrammarParserCOMMA {
 		{
-			p.SetState(71)
+			p.SetState(79)
 			p.Match(CsvShiftGrammarParserCOMMA)
 		}
 		{
-			p.SetState(72)
+			p.SetState(80)
 			p.Match(CsvShiftGrammarParserIDENTIFIER)
 		}
 
-
-		p.SetState(77)
+		p.SetState(85)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 
-
-
 	return localctx
 }
-
-

@@ -1,4 +1,4 @@
-// Code generated from /Users/david.savic/Repositories/10-percent-days/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from /home/sav/Development/Go/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
 
 package parser // CsvShiftGrammar
 

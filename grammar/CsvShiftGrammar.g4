@@ -9,7 +9,10 @@ COLUMNS: 'Columns';
 // Transformers
 TRIM: '-> Trim';
 REPLACE: '-> Replace';
-COMBINE: '-> Combine with';
+JOIN: '-> Join with';
+LOWER: '-> ToLower';
+UPPER: '-> ToUpper';
+SPLIT: '-> Split on';
 
 // Symbols
 WITH: 'with';
@@ -35,12 +38,17 @@ singleColumnModifierSection: COLUMN IDENTIFIER singleColumnTransformation+;
 multipleColumnModifierSection: COLUMNS columns multipleColumnTransformation+;
 
 singleColumnTransformation: TRIM
-              | REPLACE STRING WITH STRING
-              ;
+                | REPLACE STRING WITH STRING
+                | LOWER
+                | UPPER
+                | SPLIT STRING AS columns
+                ;
 
 multipleColumnTransformation: TRIM
-              | REPLACE STRING WITH STRING
-              | COMBINE STRING AS IDENTIFIER
-              ;
+                | REPLACE STRING WITH STRING
+                | JOIN STRING AS IDENTIFIER
+                | LOWER
+                | UPPER
+                ;
 
 columns: IDENTIFIER (COMMA IDENTIFIER)*;

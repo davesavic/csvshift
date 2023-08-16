@@ -55,6 +55,26 @@ func (s *CsvShiftListener) ExitSingleColumnModifierSection(ctx *parser.SingleCol
 			trs = append(trs, &transformers.TrimTransformer{
 				Columns: []string{column},
 			})
+		case modifier.LOWER() != nil:
+			trs = append(trs, &transformers.LowerTransformer{
+				Columns: []string{column},
+			})
+		case modifier.UPPER() != nil:
+			trs = append(trs, &transformers.UpperTransformer{
+				Columns: []string{column},
+			})
+		case modifier.SPLIT() != nil:
+			intoCols := modifier.Columns().AllIDENTIFIER()
+			var intoColNames []string
+			for _, intoCol := range intoCols {
+				intoColNames = append(intoColNames, intoCol.GetText())
+			}
+
+			trs = append(trs, &transformers.SplitTransformer{
+				Column:      column,
+				Separator:   extractStringContent(modifier.STRING(0).GetText()),
+				IntoColumns: intoColNames,
+			})
 		}
 	}
 
@@ -93,11 +113,19 @@ func (s *CsvShiftListener) ExitMultipleColumnModifierSection(ctx *parser.Multipl
 				From:    extractStringContent(modifier.STRING(0).GetText()),
 				To:      extractStringContent(modifier.STRING(1).GetText()),
 			})
-		case modifier.COMBINE() != nil:
-			trs = append(trs, &transformers.CombineTransformer{
+		case modifier.JOIN() != nil:
+			trs = append(trs, &transformers.JoinTransformer{
 				Columns: columns,
 				With:    extractStringContent(modifier.STRING(0).GetText()),
 				To:      modifier.IDENTIFIER().GetText(),
+			})
+		case modifier.LOWER() != nil:
+			trs = append(trs, &transformers.LowerTransformer{
+				Columns: columns,
+			})
+		case modifier.UPPER() != nil:
+			trs = append(trs, &transformers.UpperTransformer{
+				Columns: columns,
 			})
 		}
 	}

@@ -1,4 +1,4 @@
-// Code generated from /Users/david.savic/Repositories/10-percent-days/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from /home/sav/Development/Go/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
 
 package parser // CsvShiftGrammar
 
@@ -46,28 +46,36 @@ func (s *BaseCsvShiftGrammarListener) EnterColumnModifierSection(ctx *ColumnModi
 func (s *BaseCsvShiftGrammarListener) ExitColumnModifierSection(ctx *ColumnModifierSectionContext) {}
 
 // EnterSingleColumnModifierSection is called when production singleColumnModifierSection is entered.
-func (s *BaseCsvShiftGrammarListener) EnterSingleColumnModifierSection(ctx *SingleColumnModifierSectionContext) {}
+func (s *BaseCsvShiftGrammarListener) EnterSingleColumnModifierSection(ctx *SingleColumnModifierSectionContext) {
+}
 
 // ExitSingleColumnModifierSection is called when production singleColumnModifierSection is exited.
-func (s *BaseCsvShiftGrammarListener) ExitSingleColumnModifierSection(ctx *SingleColumnModifierSectionContext) {}
+func (s *BaseCsvShiftGrammarListener) ExitSingleColumnModifierSection(ctx *SingleColumnModifierSectionContext) {
+}
 
 // EnterMultipleColumnModifierSection is called when production multipleColumnModifierSection is entered.
-func (s *BaseCsvShiftGrammarListener) EnterMultipleColumnModifierSection(ctx *MultipleColumnModifierSectionContext) {}
+func (s *BaseCsvShiftGrammarListener) EnterMultipleColumnModifierSection(ctx *MultipleColumnModifierSectionContext) {
+}
 
 // ExitMultipleColumnModifierSection is called when production multipleColumnModifierSection is exited.
-func (s *BaseCsvShiftGrammarListener) ExitMultipleColumnModifierSection(ctx *MultipleColumnModifierSectionContext) {}
+func (s *BaseCsvShiftGrammarListener) ExitMultipleColumnModifierSection(ctx *MultipleColumnModifierSectionContext) {
+}
 
 // EnterSingleColumnTransformation is called when production singleColumnTransformation is entered.
-func (s *BaseCsvShiftGrammarListener) EnterSingleColumnTransformation(ctx *SingleColumnTransformationContext) {}
+func (s *BaseCsvShiftGrammarListener) EnterSingleColumnTransformation(ctx *SingleColumnTransformationContext) {
+}
 
 // ExitSingleColumnTransformation is called when production singleColumnTransformation is exited.
-func (s *BaseCsvShiftGrammarListener) ExitSingleColumnTransformation(ctx *SingleColumnTransformationContext) {}
+func (s *BaseCsvShiftGrammarListener) ExitSingleColumnTransformation(ctx *SingleColumnTransformationContext) {
+}
 
 // EnterMultipleColumnTransformation is called when production multipleColumnTransformation is entered.
-func (s *BaseCsvShiftGrammarListener) EnterMultipleColumnTransformation(ctx *MultipleColumnTransformationContext) {}
+func (s *BaseCsvShiftGrammarListener) EnterMultipleColumnTransformation(ctx *MultipleColumnTransformationContext) {
+}
 
 // ExitMultipleColumnTransformation is called when production multipleColumnTransformation is exited.
-func (s *BaseCsvShiftGrammarListener) ExitMultipleColumnTransformation(ctx *MultipleColumnTransformationContext) {}
+func (s *BaseCsvShiftGrammarListener) ExitMultipleColumnTransformation(ctx *MultipleColumnTransformationContext) {
+}
 
 // EnterColumns is called when production columns is entered.
 func (s *BaseCsvShiftGrammarListener) EnterColumns(ctx *ColumnsContext) {}
