@@ -7,17 +7,17 @@ import (
 
 type MultipleColumnTrimTransformerFactory struct{}
 
-type multipleColumnTrimTransformer struct {
+type MultipleColumnTrimTransformer struct {
 	Columns []string
 }
 
 type SingleColumnTrimTransformerFactory struct{}
 
-type singleColumnTrimTransformer struct {
+type SingleColumnTrimTransformer struct {
 	Column string
 }
 
-func (t *multipleColumnTrimTransformer) Apply(row map[string]interface{}) {
+func (t *MultipleColumnTrimTransformer) Apply(row map[string]interface{}) {
 	for _, column := range t.Columns {
 		val, ok := row[column].(string)
 		if ok {
@@ -31,12 +31,12 @@ func (t *MultipleColumnTrimTransformerFactory) IsMatch(modifier parser.IMultiple
 }
 
 func (t *MultipleColumnTrimTransformerFactory) Create(columns []string, _ parser.IMultipleColumnTransformationContext) Transformer {
-	return &multipleColumnTrimTransformer{
+	return &MultipleColumnTrimTransformer{
 		Columns: columns,
 	}
 }
 
-func (t *singleColumnTrimTransformer) Apply(row map[string]interface{}) {
+func (t *SingleColumnTrimTransformer) Apply(row map[string]interface{}) {
 	val, ok := row[t.Column].(string)
 	if ok {
 		row[t.Column] = strings.TrimSpace(val)
@@ -48,7 +48,7 @@ func (t *SingleColumnTrimTransformerFactory) IsMatch(modifier parser.ISingleColu
 }
 
 func (t *SingleColumnTrimTransformerFactory) Create(column string, _ parser.ISingleColumnTransformationContext) Transformer {
-	return &singleColumnTrimTransformer{
+	return &SingleColumnTrimTransformer{
 		Column: column,
 	}
 }

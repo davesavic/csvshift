@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type singleColumnSplitTransformer struct {
+type SingleColumnSplitTransformer struct {
 	Column      string
 	Separator   string
 	IntoColumns []string
@@ -13,16 +13,25 @@ type singleColumnSplitTransformer struct {
 
 type SingleColumnSplitTransformerFactory struct{}
 
-func (t *singleColumnSplitTransformer) Apply(row map[string]interface{}) {
+func (t *SingleColumnSplitTransformer) Apply(row map[string]interface{}) {
 	val, ok := row[t.Column].(string)
-	if ok {
-		parts := strings.Split(val, t.Separator)
-		for i, column := range t.IntoColumns {
-			if i < len(parts) {
-				row[column] = parts[i]
-			} else {
-				row[column] = ""
-			}
+	if !ok {
+		return
+	}
+
+	if !strings.Contains(val, t.Separator) {
+		for _, column := range t.IntoColumns {
+			row[column] = ""
+		}
+		return
+	}
+
+	parts := strings.Split(val, t.Separator)
+	for i, column := range t.IntoColumns {
+		if i < len(parts) {
+			row[column] = parts[i]
+		} else {
+			row[column] = ""
 		}
 	}
 }
@@ -38,7 +47,7 @@ func (t *SingleColumnSplitTransformerFactory) Create(column string, modifier par
 		intoColNames = append(intoColNames, intoCol.GetText())
 	}
 
-	return &singleColumnSplitTransformer{
+	return &SingleColumnSplitTransformer{
 		Column:      column,
 		Separator:   ExtractStringContent(modifier.STRING(0).GetText()),
 		IntoColumns: intoColNames,

@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type multipleColumnReplaceTransformer struct {
+type MultipleColumnReplaceTransformer struct {
 	Columns []string
 	From    string
 	To      string
@@ -13,7 +13,7 @@ type multipleColumnReplaceTransformer struct {
 
 type MultipleColumnReplaceTransformerFactory struct{}
 
-type singleColumnReplaceTransformer struct {
+type SingleColumnReplaceTransformer struct {
 	Column string
 	From   string
 	To     string
@@ -21,7 +21,7 @@ type singleColumnReplaceTransformer struct {
 
 type SingleColumnReplaceTransformerFactory struct{}
 
-func (t *multipleColumnReplaceTransformer) Apply(row map[string]interface{}) {
+func (t *MultipleColumnReplaceTransformer) Apply(row map[string]interface{}) {
 	for _, column := range t.Columns {
 		val, ok := row[column].(string)
 		if ok {
@@ -35,14 +35,14 @@ func (t *MultipleColumnReplaceTransformerFactory) IsMatch(modifier parser.IMulti
 }
 
 func (t *MultipleColumnReplaceTransformerFactory) Create(columns []string, modifier parser.IMultipleColumnTransformationContext) Transformer {
-	return &multipleColumnReplaceTransformer{
+	return &MultipleColumnReplaceTransformer{
 		Columns: columns,
 		From:    ExtractStringContent(modifier.STRING(0).GetText()),
 		To:      ExtractStringContent(modifier.STRING(1).GetText()),
 	}
 }
 
-func (t *singleColumnReplaceTransformer) Apply(row map[string]interface{}) {
+func (t *SingleColumnReplaceTransformer) Apply(row map[string]interface{}) {
 	val, ok := row[t.Column].(string)
 	if ok {
 		row[t.Column] = strings.ReplaceAll(val, t.From, t.To)
@@ -54,7 +54,7 @@ func (t *SingleColumnReplaceTransformerFactory) IsMatch(modifier parser.ISingleC
 }
 
 func (t *SingleColumnReplaceTransformerFactory) Create(column string, modifier parser.ISingleColumnTransformationContext) Transformer {
-	return &singleColumnReplaceTransformer{
+	return &SingleColumnReplaceTransformer{
 		Column: column,
 		From:   ExtractStringContent(modifier.STRING(0).GetText()),
 		To:     ExtractStringContent(modifier.STRING(1).GetText()),

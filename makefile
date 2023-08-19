@@ -23,3 +23,10 @@ endif
 	@echo "Build complete."
 
 .PHONY: build
+
+test:
+	@echo "Testing..."
+	@go test -v ./...
+	@echo "Test complete."
+
+.PHONY: test

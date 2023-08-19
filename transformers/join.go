@@ -7,13 +7,13 @@ import (
 
 type MultipleColumnJoinTransformerFactory struct{}
 
-type multipleColumnJoinTransformer struct {
+type MultipleColumnJoinTransformer struct {
 	Columns []string
 	With    string
 	To      string
 }
 
-func (t *multipleColumnJoinTransformer) Apply(row map[string]interface{}) {
+func (t *MultipleColumnJoinTransformer) Apply(row map[string]interface{}) {
 	values := make([]string, 0, len(t.Columns))
 	for _, column := range t.Columns {
 		val, ok := row[column].(string)
@@ -32,7 +32,7 @@ func (t *MultipleColumnJoinTransformerFactory) IsMatch(modifier parser.IMultiple
 }
 
 func (t *MultipleColumnJoinTransformerFactory) Create(columns []string, modifier parser.IMultipleColumnTransformationContext) Transformer {
-	return &multipleColumnJoinTransformer{
+	return &MultipleColumnJoinTransformer{
 		Columns: columns,
 		With:    ExtractStringContent(modifier.STRING(0).GetText()),
 		To:      modifier.IDENTIFIER().GetText(),

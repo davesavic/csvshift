@@ -5,31 +5,31 @@ import (
 	"strings"
 )
 
-type singleColumnLowerTransformer struct {
+type SingleColumnLowerTransformer struct {
 	Column string
 }
 
 type SingleColumnLowerTransformerFactory struct{}
 
-type singleColumnUpperTransformer struct {
+type SingleColumnUpperTransformer struct {
 	Column string
 }
 
 type SingleColumnUpperTransformerFactory struct{}
 
-type multipleColumnLowerTransformer struct {
+type MultipleColumnLowerTransformer struct {
 	Columns []string
 }
 
 type MultipleColumnLowerTransformerFactory struct{}
 
-type multipleColumnUpperTransformer struct {
+type MultipleColumnUpperTransformer struct {
 	Columns []string
 }
 
 type MultipleColumnUpperTransformerFactory struct{}
 
-func (t *multipleColumnLowerTransformer) Apply(row map[string]interface{}) {
+func (t *MultipleColumnLowerTransformer) Apply(row map[string]interface{}) {
 	for _, column := range t.Columns {
 		val, ok := row[column].(string)
 		if ok {
@@ -43,12 +43,12 @@ func (t *MultipleColumnLowerTransformerFactory) IsMatch(modifier parser.IMultipl
 }
 
 func (t *MultipleColumnLowerTransformerFactory) Create(columns []string, _ parser.IMultipleColumnTransformationContext) Transformer {
-	return &multipleColumnLowerTransformer{
+	return &MultipleColumnLowerTransformer{
 		Columns: columns,
 	}
 }
 
-func (t *multipleColumnUpperTransformer) Apply(row map[string]interface{}) {
+func (t *MultipleColumnUpperTransformer) Apply(row map[string]interface{}) {
 	for _, column := range t.Columns {
 		val, ok := row[column].(string)
 		if ok {
@@ -62,12 +62,12 @@ func (t *MultipleColumnUpperTransformerFactory) IsMatch(modifier parser.IMultipl
 }
 
 func (t *MultipleColumnUpperTransformerFactory) Create(columns []string, _ parser.IMultipleColumnTransformationContext) Transformer {
-	return &multipleColumnUpperTransformer{
+	return &MultipleColumnUpperTransformer{
 		Columns: columns,
 	}
 }
 
-func (t *singleColumnLowerTransformer) Apply(row map[string]interface{}) {
+func (t *SingleColumnLowerTransformer) Apply(row map[string]interface{}) {
 	val, ok := row[t.Column].(string)
 	if ok {
 		row[t.Column] = strings.ToLower(val)
@@ -79,12 +79,12 @@ func (t *SingleColumnLowerTransformerFactory) IsMatch(modifier parser.ISingleCol
 }
 
 func (t *SingleColumnLowerTransformerFactory) Create(column string, _ parser.ISingleColumnTransformationContext) Transformer {
-	return &singleColumnLowerTransformer{
+	return &SingleColumnLowerTransformer{
 		Column: column,
 	}
 }
 
-func (t *singleColumnUpperTransformer) Apply(row map[string]interface{}) {
+func (t *SingleColumnUpperTransformer) Apply(row map[string]interface{}) {
 	val, ok := row[t.Column].(string)
 	if ok {
 		row[t.Column] = strings.ToUpper(val)
@@ -96,7 +96,7 @@ func (t *SingleColumnUpperTransformerFactory) IsMatch(modifier parser.ISingleCol
 }
 
 func (t *SingleColumnUpperTransformerFactory) Create(column string, _ parser.ISingleColumnTransformationContext) Transformer {
-	return &singleColumnUpperTransformer{
+	return &SingleColumnUpperTransformer{
 		Column: column,
 	}
 }
