@@ -35,12 +35,13 @@ func csvshiftgrammarParserInit() {
 	staticData.literalNames = []string{
 		"", "'Input Columns'", "'Output Columns'", "'Column'", "'Columns'",
 		"'-> Trim'", "'-> Replace'", "'-> Join with'", "'-> ToLower'", "'-> ToUpper'",
-		"'-> Split on'", "'with'", "'as'", "','", "'\"'", "'->'",
+		"'-> Split on'", "'-> RegexReplace'", "'with'", "'as'", "','", "'\"'",
+		"'->'",
 	}
 	staticData.symbolicNames = []string{
 		"", "INPUT", "OUTPUT", "COLUMN", "COLUMNS", "TRIM", "REPLACE", "JOIN",
-		"LOWER", "UPPER", "SPLIT", "WITH", "AS", "COMMA", "QUOTE", "ARROW",
-		"IDENTIFIER", "STRING", "WS",
+		"LOWER", "UPPER", "SPLIT", "REGEXREPLACE", "WITH", "AS", "COMMA", "QUOTE",
+		"ARROW", "IDENTIFIER", "STRING", "WS",
 	}
 	staticData.ruleNames = []string{
 		"csvTransform", "inputSection", "outputSection", "columnModifierSection",
@@ -49,41 +50,44 @@ func csvshiftgrammarParserInit() {
 	}
 	staticData.predictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 18, 87, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 19, 95, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 1, 0, 1, 0, 5, 0, 21,
 		8, 0, 10, 0, 12, 0, 24, 9, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2,
 		1, 2, 1, 2, 1, 3, 1, 3, 3, 3, 37, 8, 3, 1, 4, 1, 4, 1, 4, 4, 4, 42, 8,
 		4, 11, 4, 12, 4, 43, 1, 5, 1, 5, 1, 5, 4, 5, 49, 8, 5, 11, 5, 12, 5, 50,
-		1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 3, 6,
-		64, 8, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1,
-		7, 3, 7, 77, 8, 7, 1, 8, 1, 8, 1, 8, 5, 8, 82, 8, 8, 10, 8, 12, 8, 85,
-		9, 8, 1, 8, 0, 0, 9, 0, 2, 4, 6, 8, 10, 12, 14, 16, 0, 0, 90, 0, 18, 1,
-		0, 0, 0, 2, 28, 1, 0, 0, 0, 4, 31, 1, 0, 0, 0, 6, 36, 1, 0, 0, 0, 8, 38,
-		1, 0, 0, 0, 10, 45, 1, 0, 0, 0, 12, 63, 1, 0, 0, 0, 14, 76, 1, 0, 0, 0,
-		16, 78, 1, 0, 0, 0, 18, 22, 3, 2, 1, 0, 19, 21, 3, 6, 3, 0, 20, 19, 1,
-		0, 0, 0, 21, 24, 1, 0, 0, 0, 22, 20, 1, 0, 0, 0, 22, 23, 1, 0, 0, 0, 23,
-		25, 1, 0, 0, 0, 24, 22, 1, 0, 0, 0, 25, 26, 3, 4, 2, 0, 26, 27, 5, 0, 0,
-		1, 27, 1, 1, 0, 0, 0, 28, 29, 5, 1, 0, 0, 29, 30, 3, 16, 8, 0, 30, 3, 1,
-		0, 0, 0, 31, 32, 5, 2, 0, 0, 32, 33, 3, 16, 8, 0, 33, 5, 1, 0, 0, 0, 34,
-		37, 3, 8, 4, 0, 35, 37, 3, 10, 5, 0, 36, 34, 1, 0, 0, 0, 36, 35, 1, 0,
-		0, 0, 37, 7, 1, 0, 0, 0, 38, 39, 5, 3, 0, 0, 39, 41, 5, 16, 0, 0, 40, 42,
-		3, 12, 6, 0, 41, 40, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0,
-		43, 44, 1, 0, 0, 0, 44, 9, 1, 0, 0, 0, 45, 46, 5, 4, 0, 0, 46, 48, 3, 16,
-		8, 0, 47, 49, 3, 14, 7, 0, 48, 47, 1, 0, 0, 0, 49, 50, 1, 0, 0, 0, 50,
-		48, 1, 0, 0, 0, 50, 51, 1, 0, 0, 0, 51, 11, 1, 0, 0, 0, 52, 64, 5, 5, 0,
-		0, 53, 54, 5, 6, 0, 0, 54, 55, 5, 17, 0, 0, 55, 56, 5, 11, 0, 0, 56, 64,
-		5, 17, 0, 0, 57, 64, 5, 8, 0, 0, 58, 64, 5, 9, 0, 0, 59, 60, 5, 10, 0,
-		0, 60, 61, 5, 17, 0, 0, 61, 62, 5, 12, 0, 0, 62, 64, 3, 16, 8, 0, 63, 52,
-		1, 0, 0, 0, 63, 53, 1, 0, 0, 0, 63, 57, 1, 0, 0, 0, 63, 58, 1, 0, 0, 0,
-		63, 59, 1, 0, 0, 0, 64, 13, 1, 0, 0, 0, 65, 77, 5, 5, 0, 0, 66, 67, 5,
-		6, 0, 0, 67, 68, 5, 17, 0, 0, 68, 69, 5, 11, 0, 0, 69, 77, 5, 17, 0, 0,
-		70, 71, 5, 7, 0, 0, 71, 72, 5, 17, 0, 0, 72, 73, 5, 12, 0, 0, 73, 77, 5,
-		16, 0, 0, 74, 77, 5, 8, 0, 0, 75, 77, 5, 9, 0, 0, 76, 65, 1, 0, 0, 0, 76,
-		66, 1, 0, 0, 0, 76, 70, 1, 0, 0, 0, 76, 74, 1, 0, 0, 0, 76, 75, 1, 0, 0,
-		0, 77, 15, 1, 0, 0, 0, 78, 83, 5, 16, 0, 0, 79, 80, 5, 13, 0, 0, 80, 82,
-		5, 16, 0, 0, 81, 79, 1, 0, 0, 0, 82, 85, 1, 0, 0, 0, 83, 81, 1, 0, 0, 0,
-		83, 84, 1, 0, 0, 0, 84, 17, 1, 0, 0, 0, 85, 83, 1, 0, 0, 0, 7, 22, 36,
-		43, 50, 63, 76, 83,
+		1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6,
+		1, 6, 1, 6, 1, 6, 3, 6, 68, 8, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1,
+		7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 85, 8, 7, 1, 8,
+		1, 8, 1, 8, 5, 8, 90, 8, 8, 10, 8, 12, 8, 93, 9, 8, 1, 8, 0, 0, 9, 0, 2,
+		4, 6, 8, 10, 12, 14, 16, 0, 0, 100, 0, 18, 1, 0, 0, 0, 2, 28, 1, 0, 0,
+		0, 4, 31, 1, 0, 0, 0, 6, 36, 1, 0, 0, 0, 8, 38, 1, 0, 0, 0, 10, 45, 1,
+		0, 0, 0, 12, 67, 1, 0, 0, 0, 14, 84, 1, 0, 0, 0, 16, 86, 1, 0, 0, 0, 18,
+		22, 3, 2, 1, 0, 19, 21, 3, 6, 3, 0, 20, 19, 1, 0, 0, 0, 21, 24, 1, 0, 0,
+		0, 22, 20, 1, 0, 0, 0, 22, 23, 1, 0, 0, 0, 23, 25, 1, 0, 0, 0, 24, 22,
+		1, 0, 0, 0, 25, 26, 3, 4, 2, 0, 26, 27, 5, 0, 0, 1, 27, 1, 1, 0, 0, 0,
+		28, 29, 5, 1, 0, 0, 29, 30, 3, 16, 8, 0, 30, 3, 1, 0, 0, 0, 31, 32, 5,
+		2, 0, 0, 32, 33, 3, 16, 8, 0, 33, 5, 1, 0, 0, 0, 34, 37, 3, 8, 4, 0, 35,
+		37, 3, 10, 5, 0, 36, 34, 1, 0, 0, 0, 36, 35, 1, 0, 0, 0, 37, 7, 1, 0, 0,
+		0, 38, 39, 5, 3, 0, 0, 39, 41, 5, 17, 0, 0, 40, 42, 3, 12, 6, 0, 41, 40,
+		1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0, 43, 44, 1, 0, 0, 0,
+		44, 9, 1, 0, 0, 0, 45, 46, 5, 4, 0, 0, 46, 48, 3, 16, 8, 0, 47, 49, 3,
+		14, 7, 0, 48, 47, 1, 0, 0, 0, 49, 50, 1, 0, 0, 0, 50, 48, 1, 0, 0, 0, 50,
+		51, 1, 0, 0, 0, 51, 11, 1, 0, 0, 0, 52, 68, 5, 5, 0, 0, 53, 54, 5, 6, 0,
+		0, 54, 55, 5, 18, 0, 0, 55, 56, 5, 12, 0, 0, 56, 68, 5, 18, 0, 0, 57, 68,
+		5, 8, 0, 0, 58, 68, 5, 9, 0, 0, 59, 60, 5, 10, 0, 0, 60, 61, 5, 18, 0,
+		0, 61, 62, 5, 13, 0, 0, 62, 68, 3, 16, 8, 0, 63, 64, 5, 11, 0, 0, 64, 65,
+		5, 18, 0, 0, 65, 66, 5, 12, 0, 0, 66, 68, 5, 18, 0, 0, 67, 52, 1, 0, 0,
+		0, 67, 53, 1, 0, 0, 0, 67, 57, 1, 0, 0, 0, 67, 58, 1, 0, 0, 0, 67, 59,
+		1, 0, 0, 0, 67, 63, 1, 0, 0, 0, 68, 13, 1, 0, 0, 0, 69, 85, 5, 5, 0, 0,
+		70, 71, 5, 6, 0, 0, 71, 72, 5, 18, 0, 0, 72, 73, 5, 12, 0, 0, 73, 85, 5,
+		18, 0, 0, 74, 75, 5, 7, 0, 0, 75, 76, 5, 18, 0, 0, 76, 77, 5, 13, 0, 0,
+		77, 85, 5, 17, 0, 0, 78, 85, 5, 8, 0, 0, 79, 85, 5, 9, 0, 0, 80, 81, 5,
+		11, 0, 0, 81, 82, 5, 18, 0, 0, 82, 83, 5, 12, 0, 0, 83, 85, 5, 18, 0, 0,
+		84, 69, 1, 0, 0, 0, 84, 70, 1, 0, 0, 0, 84, 74, 1, 0, 0, 0, 84, 78, 1,
+		0, 0, 0, 84, 79, 1, 0, 0, 0, 84, 80, 1, 0, 0, 0, 85, 15, 1, 0, 0, 0, 86,
+		91, 5, 17, 0, 0, 87, 88, 5, 14, 0, 0, 88, 90, 5, 17, 0, 0, 89, 87, 1, 0,
+		0, 0, 90, 93, 1, 0, 0, 0, 91, 89, 1, 0, 0, 0, 91, 92, 1, 0, 0, 0, 92, 17,
+		1, 0, 0, 0, 93, 91, 1, 0, 0, 0, 7, 22, 36, 43, 50, 67, 84, 91,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -121,25 +125,26 @@ func NewCsvShiftGrammarParser(input antlr.TokenStream) *CsvShiftGrammarParser {
 
 // CsvShiftGrammarParser tokens.
 const (
-	CsvShiftGrammarParserEOF        = antlr.TokenEOF
-	CsvShiftGrammarParserINPUT      = 1
-	CsvShiftGrammarParserOUTPUT     = 2
-	CsvShiftGrammarParserCOLUMN     = 3
-	CsvShiftGrammarParserCOLUMNS    = 4
-	CsvShiftGrammarParserTRIM       = 5
-	CsvShiftGrammarParserREPLACE    = 6
-	CsvShiftGrammarParserJOIN       = 7
-	CsvShiftGrammarParserLOWER      = 8
-	CsvShiftGrammarParserUPPER      = 9
-	CsvShiftGrammarParserSPLIT      = 10
-	CsvShiftGrammarParserWITH       = 11
-	CsvShiftGrammarParserAS         = 12
-	CsvShiftGrammarParserCOMMA      = 13
-	CsvShiftGrammarParserQUOTE      = 14
-	CsvShiftGrammarParserARROW      = 15
-	CsvShiftGrammarParserIDENTIFIER = 16
-	CsvShiftGrammarParserSTRING     = 17
-	CsvShiftGrammarParserWS         = 18
+	CsvShiftGrammarParserEOF          = antlr.TokenEOF
+	CsvShiftGrammarParserINPUT        = 1
+	CsvShiftGrammarParserOUTPUT       = 2
+	CsvShiftGrammarParserCOLUMN       = 3
+	CsvShiftGrammarParserCOLUMNS      = 4
+	CsvShiftGrammarParserTRIM         = 5
+	CsvShiftGrammarParserREPLACE      = 6
+	CsvShiftGrammarParserJOIN         = 7
+	CsvShiftGrammarParserLOWER        = 8
+	CsvShiftGrammarParserUPPER        = 9
+	CsvShiftGrammarParserSPLIT        = 10
+	CsvShiftGrammarParserREGEXREPLACE = 11
+	CsvShiftGrammarParserWITH         = 12
+	CsvShiftGrammarParserAS           = 13
+	CsvShiftGrammarParserCOMMA        = 14
+	CsvShiftGrammarParserQUOTE        = 15
+	CsvShiftGrammarParserARROW        = 16
+	CsvShiftGrammarParserIDENTIFIER   = 17
+	CsvShiftGrammarParserSTRING       = 18
+	CsvShiftGrammarParserWS           = 19
 )
 
 // CsvShiftGrammarParser rules.
@@ -880,7 +885,7 @@ func (p *CsvShiftGrammarParser) SingleColumnModifierSection() (localctx ISingleC
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1888) != 0) {
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&3936) != 0) {
 		{
 			p.SetState(40)
 			p.SingleColumnTransformation()
@@ -1056,7 +1061,7 @@ func (p *CsvShiftGrammarParser) MultipleColumnModifierSection() (localctx IMulti
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&992) != 0) {
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&3040) != 0) {
 		{
 			p.SetState(47)
 			p.MultipleColumnTransformation()
@@ -1088,6 +1093,7 @@ type ISingleColumnTransformationContext interface {
 	SPLIT() antlr.TerminalNode
 	AS() antlr.TerminalNode
 	Columns() IColumnsContext
+	REGEXREPLACE() antlr.TerminalNode
 
 	// IsSingleColumnTransformationContext differentiates from other interfaces.
 	IsSingleColumnTransformationContext()
@@ -1172,6 +1178,10 @@ func (s *SingleColumnTransformationContext) Columns() IColumnsContext {
 	return t.(IColumnsContext)
 }
 
+func (s *SingleColumnTransformationContext) REGEXREPLACE() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserREGEXREPLACE, 0)
+}
+
 func (s *SingleColumnTransformationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -1215,7 +1225,7 @@ func (p *CsvShiftGrammarParser) SingleColumnTransformation() (localctx ISingleCo
 		}
 	}()
 
-	p.SetState(63)
+	p.SetState(67)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -1278,6 +1288,25 @@ func (p *CsvShiftGrammarParser) SingleColumnTransformation() (localctx ISingleCo
 			p.Columns()
 		}
 
+	case CsvShiftGrammarParserREGEXREPLACE:
+		p.EnterOuterAlt(localctx, 6)
+		{
+			p.SetState(63)
+			p.Match(CsvShiftGrammarParserREGEXREPLACE)
+		}
+		{
+			p.SetState(64)
+			p.Match(CsvShiftGrammarParserSTRING)
+		}
+		{
+			p.SetState(65)
+			p.Match(CsvShiftGrammarParserWITH)
+		}
+		{
+			p.SetState(66)
+			p.Match(CsvShiftGrammarParserSTRING)
+		}
+
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
@@ -1303,6 +1332,7 @@ type IMultipleColumnTransformationContext interface {
 	IDENTIFIER() antlr.TerminalNode
 	LOWER() antlr.TerminalNode
 	UPPER() antlr.TerminalNode
+	REGEXREPLACE() antlr.TerminalNode
 
 	// IsMultipleColumnTransformationContext differentiates from other interfaces.
 	IsMultipleColumnTransformationContext()
@@ -1375,6 +1405,10 @@ func (s *MultipleColumnTransformationContext) UPPER() antlr.TerminalNode {
 	return s.GetToken(CsvShiftGrammarParserUPPER, 0)
 }
 
+func (s *MultipleColumnTransformationContext) REGEXREPLACE() antlr.TerminalNode {
+	return s.GetToken(CsvShiftGrammarParserREGEXREPLACE, 0)
+}
+
 func (s *MultipleColumnTransformationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -1418,41 +1452,22 @@ func (p *CsvShiftGrammarParser) MultipleColumnTransformation() (localctx IMultip
 		}
 	}()
 
-	p.SetState(76)
+	p.SetState(84)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case CsvShiftGrammarParserTRIM:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(65)
+			p.SetState(69)
 			p.Match(CsvShiftGrammarParserTRIM)
 		}
 
 	case CsvShiftGrammarParserREPLACE:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(66)
-			p.Match(CsvShiftGrammarParserREPLACE)
-		}
-		{
-			p.SetState(67)
-			p.Match(CsvShiftGrammarParserSTRING)
-		}
-		{
-			p.SetState(68)
-			p.Match(CsvShiftGrammarParserWITH)
-		}
-		{
-			p.SetState(69)
-			p.Match(CsvShiftGrammarParserSTRING)
-		}
-
-	case CsvShiftGrammarParserJOIN:
-		p.EnterOuterAlt(localctx, 3)
-		{
 			p.SetState(70)
-			p.Match(CsvShiftGrammarParserJOIN)
+			p.Match(CsvShiftGrammarParserREPLACE)
 		}
 		{
 			p.SetState(71)
@@ -1460,25 +1475,63 @@ func (p *CsvShiftGrammarParser) MultipleColumnTransformation() (localctx IMultip
 		}
 		{
 			p.SetState(72)
-			p.Match(CsvShiftGrammarParserAS)
+			p.Match(CsvShiftGrammarParserWITH)
 		}
 		{
 			p.SetState(73)
+			p.Match(CsvShiftGrammarParserSTRING)
+		}
+
+	case CsvShiftGrammarParserJOIN:
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(74)
+			p.Match(CsvShiftGrammarParserJOIN)
+		}
+		{
+			p.SetState(75)
+			p.Match(CsvShiftGrammarParserSTRING)
+		}
+		{
+			p.SetState(76)
+			p.Match(CsvShiftGrammarParserAS)
+		}
+		{
+			p.SetState(77)
 			p.Match(CsvShiftGrammarParserIDENTIFIER)
 		}
 
 	case CsvShiftGrammarParserLOWER:
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(74)
+			p.SetState(78)
 			p.Match(CsvShiftGrammarParserLOWER)
 		}
 
 	case CsvShiftGrammarParserUPPER:
 		p.EnterOuterAlt(localctx, 5)
 		{
-			p.SetState(75)
+			p.SetState(79)
 			p.Match(CsvShiftGrammarParserUPPER)
+		}
+
+	case CsvShiftGrammarParserREGEXREPLACE:
+		p.EnterOuterAlt(localctx, 6)
+		{
+			p.SetState(80)
+			p.Match(CsvShiftGrammarParserREGEXREPLACE)
+		}
+		{
+			p.SetState(81)
+			p.Match(CsvShiftGrammarParserSTRING)
+		}
+		{
+			p.SetState(82)
+			p.Match(CsvShiftGrammarParserWITH)
+		}
+		{
+			p.SetState(83)
+			p.Match(CsvShiftGrammarParserSTRING)
 		}
 
 	default:
@@ -1594,24 +1647,24 @@ func (p *CsvShiftGrammarParser) Columns() (localctx IColumnsContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(78)
+		p.SetState(86)
 		p.Match(CsvShiftGrammarParserIDENTIFIER)
 	}
-	p.SetState(83)
+	p.SetState(91)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == CsvShiftGrammarParserCOMMA {
 		{
-			p.SetState(79)
+			p.SetState(87)
 			p.Match(CsvShiftGrammarParserCOMMA)
 		}
 		{
-			p.SetState(80)
+			p.SetState(88)
 			p.Match(CsvShiftGrammarParserIDENTIFIER)
 		}
 
-		p.SetState(85)
+		p.SetState(93)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}

@@ -1,4 +1,4 @@
-Input Columns id, first_name, last_name, address
+Input Columns id, first_name, last_name, address, dob
 
 Column last_name
 -> Trim
@@ -17,4 +17,7 @@ Columns street, city, state
 Column state
 -> Split on " " as state, postcode, country
 
-Output Columns id, full_name, street, city, state, postcode, country
+Column dob
+-> RegexReplace "(\d{4})-(\d{2})-(\d{2})" with "$3/$2/$1"
+
+Output Columns id, full_name, street, city, state, postcode, country, dob

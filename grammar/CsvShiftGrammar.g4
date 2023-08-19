@@ -13,6 +13,7 @@ JOIN: '-> Join with';
 LOWER: '-> ToLower';
 UPPER: '-> ToUpper';
 SPLIT: '-> Split on';
+REGEXREPLACE: '-> RegexReplace';
 
 // Symbols
 WITH: 'with';
@@ -42,6 +43,7 @@ singleColumnTransformation: TRIM
                 | LOWER
                 | UPPER
                 | SPLIT STRING AS columns
+                | REGEXREPLACE STRING WITH STRING
                 ;
 
 multipleColumnTransformation: TRIM
@@ -49,6 +51,7 @@ multipleColumnTransformation: TRIM
                 | JOIN STRING AS IDENTIFIER
                 | LOWER
                 | UPPER
+                | REGEXREPLACE STRING WITH STRING
                 ;
 
 columns: IDENTIFIER (COMMA IDENTIFIER)*;

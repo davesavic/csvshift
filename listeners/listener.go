@@ -22,6 +22,7 @@ var singleColumnTransformerFactories = []transformers.SingleColumnTransformerFac
 	&transformers.SingleColumnLowerTransformerFactory{},
 	&transformers.SingleColumnUpperTransformerFactory{},
 	&transformers.SingleColumnSplitTransformerFactory{},
+	&transformers.SingleColumnRegexReplaceTransformerFactory{},
 }
 
 var multipleColumnTransformerFactories = []transformers.MultipleColumnTransformerFactory{
@@ -30,6 +31,7 @@ var multipleColumnTransformerFactories = []transformers.MultipleColumnTransforme
 	&transformers.MultipleColumnReplaceTransformerFactory{},
 	&transformers.MultipleColumnLowerTransformerFactory{},
 	&transformers.MultipleColumnUpperTransformerFactory{},
+	&transformers.MultipleColumnRegexReplaceTransformerFactory{},
 }
 
 func NewCsvShiftListener() *CsvShiftListener {

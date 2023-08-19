@@ -81,6 +81,7 @@ Columns ... # list of columns to be transformed
 -> Join with {separator} as {column_name} # combines columns into a single column with specified separator
 -> Split on {separator} as {column_names}
 -> Replace {old} with {new} # replaces old string with new string
+-> RegexReplace {pattern} with {new} # replaces regex pattern with new string
 ```
 
 #### More Features To Come
