@@ -1,14 +1,19 @@
 package transformers
 
-import "strings"
+import (
+	parser "csvshift/gen"
+	"strings"
+)
 
-type SplitTransformer struct {
+type singleColumnSplitTransformer struct {
 	Column      string
 	Separator   string
 	IntoColumns []string
 }
 
-func (t *SplitTransformer) Apply(row map[string]interface{}) {
+type SingleColumnSplitTransformerFactory struct{}
+
+func (t *singleColumnSplitTransformer) Apply(row map[string]interface{}) {
 	val, ok := row[t.Column].(string)
 	if ok {
 		parts := strings.Split(val, t.Separator)
@@ -19,5 +24,23 @@ func (t *SplitTransformer) Apply(row map[string]interface{}) {
 				row[column] = ""
 			}
 		}
+	}
+}
+
+func (t *SingleColumnSplitTransformerFactory) IsMatch(modifier parser.ISingleColumnTransformationContext) bool {
+	return modifier.SPLIT() != nil
+}
+
+func (t *SingleColumnSplitTransformerFactory) Create(column string, modifier parser.ISingleColumnTransformationContext) Transformer {
+	intoCols := modifier.Columns().AllIDENTIFIER()
+	var intoColNames []string
+	for _, intoCol := range intoCols {
+		intoColNames = append(intoColNames, intoCol.GetText())
+	}
+
+	return &singleColumnSplitTransformer{
+		Column:      column,
+		Separator:   ExtractStringContent(modifier.STRING(0).GetText()),
+		IntoColumns: intoColNames,
 	}
 }

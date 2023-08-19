@@ -1,0 +1,20 @@
+Input Columns id, first_name, last_name, address
+
+Column last_name
+-> Trim
+-> Replace "S" with "K"
+
+Columns first_name, last_name
+-> Replace "K" with "L"
+-> Join with " " as full_name
+
+Column address
+-> Split on "," as street, city, state
+
+Columns street, city, state
+-> Trim
+
+Column state
+-> Split on " " as state, postcode, country
+
+Output Columns id, full_name, street, city, state, postcode, country
