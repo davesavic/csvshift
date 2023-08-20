@@ -7,23 +7,6 @@ replace-antlr4:
 
 .PHONY: replace-antlr4
 
-OS := $(shell uname)
-
-build:
-	@echo "Building..."
-ifeq ($(OS),Darwin)
-	@go build -o bin/csvshift ./...
-endif
-ifeq ($(OS),Linux)
-	@go build -o bin/csvshift ./...
-endif
-ifeq ($(OS),Windows_NT)
-	@go build -o bin/csvshift.exe ./...
-endif
-	@echo "Build complete."
-
-.PHONY: build
-
 test:
 	@echo "Testing..."
 	@go test -v ./...
