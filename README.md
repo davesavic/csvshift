@@ -3,11 +3,10 @@ A powerful DSL tailored for seamless CSV file manipulation. With intuitive synta
 
 ## Usage
 ### Installation
+Download the latest [release](https://github.com/davesavic/csvshift/releases) for your operating system.
+
 ```bash
-git clone git@github.com:davesavic/csvshift.git
-cd csvshift
-make build # builds binary depending on your OS to ./bin/csvshift
-./bin/csvshift --help
+./csvshift --help
 ```
 
 ### Example
