@@ -41,8 +41,10 @@ release:
 		echo "Invalid release type. Use major, minor, or patch."; \
 		exit 1; \
 	fi; \
+	trap 'echo "Error encountered, cleaning up tags..."; git tag -d $$NEW_VERSION; git push origin :refs/tags/$$NEW_VERSION;' ERR; \
 	git tag -a $$NEW_VERSION -m "$(message)"; \
 	git push origin $$NEW_VERSION; \
-	goreleaser --clean;
+	goreleaser --clean; \
+	trap - ERR;
 
 .PHONY: release

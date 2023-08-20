@@ -23,6 +23,7 @@ var singleColumnTransformerFactories = []transformers.SingleColumnTransformerFac
 	&transformers.SingleColumnUpperTransformerFactory{},
 	&transformers.SingleColumnSplitTransformerFactory{},
 	&transformers.SingleColumnRegexReplaceTransformerFactory{},
+	&transformers.SingleColumnRegexExtractTransformerFactory{},
 }
 
 var multipleColumnTransformerFactories = []transformers.MultipleColumnTransformerFactory{

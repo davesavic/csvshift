@@ -20,4 +20,7 @@ Column state
 Column dob
 -> RegexReplace "(\d{4})-(\d{2})-(\d{2})" with "$3/$2/$1"
 
-Output Columns id, full_name, street, city, state, postcode, country, dob
+Column dob
+-> RegexExtract "(\d{2})\/(\d{2})\/(\d{4})" as day, month, year
+
+Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year
