@@ -76,7 +76,7 @@ func Run(source, destination, path string) {
 		for _, header := range script.OutputColumns {
 			rVal, ok := row[header].(string)
 			if !ok {
-				log.Fatalf("Error converting output value to string: %v", err)
+				log.Fatalf("Error converting output column '%s' value to string: %v", header, err)
 			}
 
 			output = append(output, rVal)
