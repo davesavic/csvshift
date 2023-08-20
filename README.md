@@ -82,6 +82,7 @@ Columns ... # list of columns to be transformed
 -> Split on {separator} as {column_names}
 -> Replace {old} with {new} # replaces old string with new string
 -> RegexReplace {pattern} with {new} # replaces regex pattern with new string
+-> RegexExtract {pattern} into {column_names} # extracts regex pattern into new columns if pattern matches
 ```
 
 #### More Features To Come

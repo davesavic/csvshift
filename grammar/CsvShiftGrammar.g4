@@ -14,6 +14,7 @@ LOWER: '-> ToLower';
 UPPER: '-> ToUpper';
 SPLIT: '-> Split on';
 REGEXREPLACE: '-> RegexReplace';
+REGEXEXTRACT: '-> RegexExtract';
 
 // Symbols
 WITH: 'with';
@@ -44,6 +45,7 @@ singleColumnTransformation: TRIM
                 | UPPER
                 | SPLIT STRING AS columns
                 | REGEXREPLACE STRING WITH STRING
+                | REGEXEXTRACT STRING AS columns
                 ;
 
 multipleColumnTransformation: TRIM
