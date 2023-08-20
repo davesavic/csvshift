@@ -33,16 +33,16 @@ release:
 		NEW_VERSION="v$$NEW_MAJOR.0.0"; \
 	elif [ "$(type)" = "minor" ]; then \
 		NEW_MINOR=$$(( $(MINOR) + 1 )); \
-		NEW_VERSION="$(MAJOR).$$NEW_MINOR.0"; \
+		NEW_VERSION="v$(MAJOR).$$NEW_MINOR.0"; \
 	elif [ "$(type)" = "patch" ]; then \
 		NEW_PATCH=$$(( $(PATCH) + 1 )); \
-		NEW_VERSION="$(MAJOR).$(MINOR).$$NEW_PATCH"; \
+		NEW_VERSION="v$(MAJOR).$(MINOR).$$NEW_PATCH"; \
 	else \
 		echo "Invalid release type. Use major, minor, or patch."; \
 		exit 1; \
 	fi; \
 	git tag -a $$NEW_VERSION -m "$(message)"; \
 	git push origin $$NEW_VERSION; \
-	goreleaser;
+	goreleaser --clean;
 
 .PHONY: release
