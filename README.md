@@ -14,6 +14,13 @@ Download the latest [release](https://github.com/davesavic/csvshift/releases) fo
 ```bash
 csvshift --source large-file.csv --destination transformed-file.csv --path script.csvshift
 ```
+#### Source.csv
+```csv
+id,first_name,last_name,address,dob
+1,John,Smith       ,"123 Something Street, Anytown, Queensland 4209 Australia",1980-01-01
+2,Jane,Doe,"456 Something Street, Anytown, Queensland 4209 Australia",1950-01-01
+3,John,Doe,"789 Something Street, Anytown, Queensland 4209 Australia",1970-01-01
+```
 
 #### Script.csvshift
 ```
@@ -45,18 +52,12 @@ Column dob
 Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year
 ```
 
-#### Source.csv
-```csv
-first_name,last_name,email,phone_number
-John,  Doe ,JOHNDOE@company.com,1234567890
-Jane,Smith ,JaNeSmItH@company.com,0987654321
-```
-
 #### Result.csv
 ```csv
-full_name,handle,domain,phone_number
-John Doe,johndoe,company.com,1234567890
-Jane Smith,janesmith,company.com,0987654321
+id,full_name,street,city,state,postcode,country,dob,day,month,year
+1,John Lmith,123 Something Street,Anytown,Queensland,4209,Australia,01/01/1980,01,01,1980
+2,Jane Doe,456 Something Street,Anytown,Queensland,4209,Australia,01/01/1950,01,01,1950
+3,John Doe,789 Something Street,Anytown,Queensland,4209,Australia,01/01/1970,01,01,1970
 ```
 
 ### Syntax
