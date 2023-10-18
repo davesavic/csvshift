@@ -17,22 +17,32 @@ csvshift --source large-file.csv --destination transformed-file.csv --path scrip
 
 #### Script.csvshift
 ```
-Input Columns first_name, last_name, email, phone_number
+Input Columns id, first_name, last_name, address, dob
 
-Column email
--> ToLower
+Column last_name
+-> Trim
+-> Replace "S" with "K"
 
 Columns first_name, last_name
--> Trim
+-> Replace "K" with "L"
 -> Join with " " as full_name
 
-Column email
--> Split on "@" as handle, domain
+Column address
+-> Split on "," as street, city, state
 
-Column domain
--> Replace "@" with ""
+Columns street, city, state
+-> Trim
 
-Output Columns full_name, handle, domain, phone_number
+Column state
+-> Split on " " as state, postcode, country
+
+Column dob
+-> RegexReplace "(\d{4})-(\d{2})-(\d{2})" with "$3/$2/$1"
+
+Column dob
+-> RegexExtract "(\d{2})\/(\d{2})\/(\d{4})" as day, month, year
+
+Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year
 ```
 
 #### Source.csv

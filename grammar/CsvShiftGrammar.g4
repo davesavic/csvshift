@@ -20,11 +20,14 @@ REGEXEXTRACT: '-> RegexExtract';
 WITH: 'with';
 AS: 'as';
 COMMA: ',';
-QUOTE: '"';
 ARROW: '->';
 
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]*;
-STRING: QUOTE ~[\r\n"]* QUOTE;
+STRING
+    : '"' ~[\r\n"]* '"'
+    | '\'' ~[\r\n"]* '\''
+    ;
+
 WS: [ \t\r\n]+ -> skip;
 
 // Parser rules

@@ -4,7 +4,7 @@ import (
 	parser "csvshift/gen"
 	"csvshift/listeners"
 	"encoding/csv"
-	"github.com/antlr4-go/antlr"
+	"github.com/antlr4-go/antlr/v4"
 	"io"
 	"log"
 	"os"

@@ -1,5 +1,7 @@
 github.com/antlr4-go/antlr v0.0.0-20230518091524-98b52378c522 h1:o+W7GDFUwWtVkN28CW/nhh/aCmHn6OJddUs3+8vMMjs=
 github.com/antlr4-go/antlr v0.0.0-20230518091524-98b52378c522/go.mod h1:srLVvW4JLxy+tCG9Nn2l8al77mUIMCwAOLQocfLDU2w=
+github.com/antlr4-go/antlr/v4 v4.13.0 h1:lxCg3LAv+EUK6t1i0y1V6/SLeUi0eKEKdhQAlS8TVTI=
+github.com/antlr4-go/antlr/v4 v4.13.0/go.mod h1:pfChB/xh/Unjila75QW7+VU4TSnWnnk9UTnmpPaOR2g=
 github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=

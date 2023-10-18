@@ -1,8 +1,8 @@
-// Code generated from /home/sav/Development/Go/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from /home/sav/Development/Go/csvshift/grammar/CsvShiftGrammar.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // CsvShiftGrammar
 
-import "github.com/antlr4-go/antlr"
+import "github.com/antlr4-go/antlr/v4"
 
 // CsvShiftGrammarListener is a complete listener for a parse tree produced by CsvShiftGrammarParser.
 type CsvShiftGrammarListener interface {
