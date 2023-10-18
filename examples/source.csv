@@ -1,4 +1,4 @@
-id,first_name,last_name,address,dob
-1,John,Smith       ,"123 Something Street, Anytown, Queensland 4209 Australia",1980-01-01
-2,Jane,Doe,"456 Something Street, Anytown, Queensland 4209 Australia",1950-01-01
-3,John,Doe,"789 Something Street, Anytown, Queensland 4209 Australia",1970-01-01
+id,first_name,last_name,address,dob,json
+1,John,Smith       ,"123 Something Street, Anytown, Queensland 4209 Australia",1980-01-01,{'key': 'value'}
+2,Jane,Doe,"456 Something Street, Anytown, Queensland 4209 Australia",1950-01-01,{'key': 'value'}
+3,John,Doe,"789 Something Street, Anytown, Queensland 4209 Australia",1970-01-01,{'key': 'value'}

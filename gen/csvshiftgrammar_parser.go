@@ -36,12 +36,13 @@ func csvshiftgrammarParserInit() {
 		"", "'Input Columns'", "'Output Columns'", "'Column'", "'Columns'",
 		"'-> Trim'", "'-> Replace'", "'-> Join with'", "'-> ToLower'", "'-> ToUpper'",
 		"'-> Split on'", "'-> RegexReplace'", "'-> RegexExtract'", "'with'",
-		"'as'", "','", "'->'",
+		"'as'", "','", "'->'", "'\"'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "INPUT", "OUTPUT", "COLUMN", "COLUMNS", "TRIM", "REPLACE", "JOIN",
 		"LOWER", "UPPER", "SPLIT", "REGEXREPLACE", "REGEXEXTRACT", "WITH", "AS",
-		"COMMA", "ARROW", "IDENTIFIER", "STRING", "WS",
+		"COMMA", "ARROW", "QUOTE", "ESCAPE_SEQUENCE", "STRING", "IDENTIFIER",
+		"WS",
 	}
 	staticData.RuleNames = []string{
 		"csvTransform", "inputSection", "outputSection", "columnModifierSection",
@@ -50,7 +51,7 @@ func csvshiftgrammarParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 19, 99, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 21, 99, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 1, 0, 1, 0, 5, 0, 21,
 		8, 0, 10, 0, 12, 0, 24, 9, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2,
 		1, 2, 1, 2, 1, 3, 1, 3, 3, 3, 37, 8, 3, 1, 4, 1, 4, 1, 4, 4, 4, 42, 8,
@@ -68,26 +69,26 @@ func csvshiftgrammarParserInit() {
 		1, 27, 1, 1, 0, 0, 0, 28, 29, 5, 1, 0, 0, 29, 30, 3, 16, 8, 0, 30, 3, 1,
 		0, 0, 0, 31, 32, 5, 2, 0, 0, 32, 33, 3, 16, 8, 0, 33, 5, 1, 0, 0, 0, 34,
 		37, 3, 8, 4, 0, 35, 37, 3, 10, 5, 0, 36, 34, 1, 0, 0, 0, 36, 35, 1, 0,
-		0, 0, 37, 7, 1, 0, 0, 0, 38, 39, 5, 3, 0, 0, 39, 41, 5, 17, 0, 0, 40, 42,
+		0, 0, 37, 7, 1, 0, 0, 0, 38, 39, 5, 3, 0, 0, 39, 41, 5, 20, 0, 0, 40, 42,
 		3, 12, 6, 0, 41, 40, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0,
 		43, 44, 1, 0, 0, 0, 44, 9, 1, 0, 0, 0, 45, 46, 5, 4, 0, 0, 46, 48, 3, 16,
 		8, 0, 47, 49, 3, 14, 7, 0, 48, 47, 1, 0, 0, 0, 49, 50, 1, 0, 0, 0, 50,
 		48, 1, 0, 0, 0, 50, 51, 1, 0, 0, 0, 51, 11, 1, 0, 0, 0, 52, 72, 5, 5, 0,
-		0, 53, 54, 5, 6, 0, 0, 54, 55, 5, 18, 0, 0, 55, 56, 5, 13, 0, 0, 56, 72,
-		5, 18, 0, 0, 57, 72, 5, 8, 0, 0, 58, 72, 5, 9, 0, 0, 59, 60, 5, 10, 0,
-		0, 60, 61, 5, 18, 0, 0, 61, 62, 5, 14, 0, 0, 62, 72, 3, 16, 8, 0, 63, 64,
-		5, 11, 0, 0, 64, 65, 5, 18, 0, 0, 65, 66, 5, 13, 0, 0, 66, 72, 5, 18, 0,
-		0, 67, 68, 5, 12, 0, 0, 68, 69, 5, 18, 0, 0, 69, 70, 5, 14, 0, 0, 70, 72,
+		0, 53, 54, 5, 6, 0, 0, 54, 55, 5, 19, 0, 0, 55, 56, 5, 13, 0, 0, 56, 72,
+		5, 19, 0, 0, 57, 72, 5, 8, 0, 0, 58, 72, 5, 9, 0, 0, 59, 60, 5, 10, 0,
+		0, 60, 61, 5, 19, 0, 0, 61, 62, 5, 14, 0, 0, 62, 72, 3, 16, 8, 0, 63, 64,
+		5, 11, 0, 0, 64, 65, 5, 19, 0, 0, 65, 66, 5, 13, 0, 0, 66, 72, 5, 19, 0,
+		0, 67, 68, 5, 12, 0, 0, 68, 69, 5, 19, 0, 0, 69, 70, 5, 14, 0, 0, 70, 72,
 		3, 16, 8, 0, 71, 52, 1, 0, 0, 0, 71, 53, 1, 0, 0, 0, 71, 57, 1, 0, 0, 0,
 		71, 58, 1, 0, 0, 0, 71, 59, 1, 0, 0, 0, 71, 63, 1, 0, 0, 0, 71, 67, 1,
 		0, 0, 0, 72, 13, 1, 0, 0, 0, 73, 89, 5, 5, 0, 0, 74, 75, 5, 6, 0, 0, 75,
-		76, 5, 18, 0, 0, 76, 77, 5, 13, 0, 0, 77, 89, 5, 18, 0, 0, 78, 79, 5, 7,
-		0, 0, 79, 80, 5, 18, 0, 0, 80, 81, 5, 14, 0, 0, 81, 89, 5, 17, 0, 0, 82,
-		89, 5, 8, 0, 0, 83, 89, 5, 9, 0, 0, 84, 85, 5, 11, 0, 0, 85, 86, 5, 18,
-		0, 0, 86, 87, 5, 13, 0, 0, 87, 89, 5, 18, 0, 0, 88, 73, 1, 0, 0, 0, 88,
+		76, 5, 19, 0, 0, 76, 77, 5, 13, 0, 0, 77, 89, 5, 19, 0, 0, 78, 79, 5, 7,
+		0, 0, 79, 80, 5, 19, 0, 0, 80, 81, 5, 14, 0, 0, 81, 89, 5, 20, 0, 0, 82,
+		89, 5, 8, 0, 0, 83, 89, 5, 9, 0, 0, 84, 85, 5, 11, 0, 0, 85, 86, 5, 19,
+		0, 0, 86, 87, 5, 13, 0, 0, 87, 89, 5, 19, 0, 0, 88, 73, 1, 0, 0, 0, 88,
 		74, 1, 0, 0, 0, 88, 78, 1, 0, 0, 0, 88, 82, 1, 0, 0, 0, 88, 83, 1, 0, 0,
-		0, 88, 84, 1, 0, 0, 0, 89, 15, 1, 0, 0, 0, 90, 95, 5, 17, 0, 0, 91, 92,
-		5, 15, 0, 0, 92, 94, 5, 17, 0, 0, 93, 91, 1, 0, 0, 0, 94, 97, 1, 0, 0,
+		0, 88, 84, 1, 0, 0, 0, 89, 15, 1, 0, 0, 0, 90, 95, 5, 20, 0, 0, 91, 92,
+		5, 15, 0, 0, 92, 94, 5, 20, 0, 0, 93, 91, 1, 0, 0, 0, 94, 97, 1, 0, 0,
 		0, 95, 93, 1, 0, 0, 0, 95, 96, 1, 0, 0, 0, 96, 17, 1, 0, 0, 0, 97, 95,
 		1, 0, 0, 0, 7, 22, 36, 43, 50, 71, 88, 95,
 	}
@@ -127,26 +128,28 @@ func NewCsvShiftGrammarParser(input antlr.TokenStream) *CsvShiftGrammarParser {
 
 // CsvShiftGrammarParser tokens.
 const (
-	CsvShiftGrammarParserEOF          = antlr.TokenEOF
-	CsvShiftGrammarParserINPUT        = 1
-	CsvShiftGrammarParserOUTPUT       = 2
-	CsvShiftGrammarParserCOLUMN       = 3
-	CsvShiftGrammarParserCOLUMNS      = 4
-	CsvShiftGrammarParserTRIM         = 5
-	CsvShiftGrammarParserREPLACE      = 6
-	CsvShiftGrammarParserJOIN         = 7
-	CsvShiftGrammarParserLOWER        = 8
-	CsvShiftGrammarParserUPPER        = 9
-	CsvShiftGrammarParserSPLIT        = 10
-	CsvShiftGrammarParserREGEXREPLACE = 11
-	CsvShiftGrammarParserREGEXEXTRACT = 12
-	CsvShiftGrammarParserWITH         = 13
-	CsvShiftGrammarParserAS           = 14
-	CsvShiftGrammarParserCOMMA        = 15
-	CsvShiftGrammarParserARROW        = 16
-	CsvShiftGrammarParserIDENTIFIER   = 17
-	CsvShiftGrammarParserSTRING       = 18
-	CsvShiftGrammarParserWS           = 19
+	CsvShiftGrammarParserEOF             = antlr.TokenEOF
+	CsvShiftGrammarParserINPUT           = 1
+	CsvShiftGrammarParserOUTPUT          = 2
+	CsvShiftGrammarParserCOLUMN          = 3
+	CsvShiftGrammarParserCOLUMNS         = 4
+	CsvShiftGrammarParserTRIM            = 5
+	CsvShiftGrammarParserREPLACE         = 6
+	CsvShiftGrammarParserJOIN            = 7
+	CsvShiftGrammarParserLOWER           = 8
+	CsvShiftGrammarParserUPPER           = 9
+	CsvShiftGrammarParserSPLIT           = 10
+	CsvShiftGrammarParserREGEXREPLACE    = 11
+	CsvShiftGrammarParserREGEXEXTRACT    = 12
+	CsvShiftGrammarParserWITH            = 13
+	CsvShiftGrammarParserAS              = 14
+	CsvShiftGrammarParserCOMMA           = 15
+	CsvShiftGrammarParserARROW           = 16
+	CsvShiftGrammarParserQUOTE           = 17
+	CsvShiftGrammarParserESCAPE_SEQUENCE = 18
+	CsvShiftGrammarParserSTRING          = 19
+	CsvShiftGrammarParserIDENTIFIER      = 20
+	CsvShiftGrammarParserWS              = 21
 )
 
 // CsvShiftGrammarParser rules.

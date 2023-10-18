@@ -125,6 +125,34 @@ func TestSingleColumnReplaceTransformer_Apply(t *testing.T) {
 				"col2": "old value2",
 			},
 		},
+		{
+			name:   "replace from ' to \" in column",
+			column: "col1",
+			from:   "'",
+			to:     "\"",
+			input: map[string]interface{}{
+				"col1": "value1 '",
+				"col2": "' value2",
+			},
+			output: map[string]interface{}{
+				"col1": "value1 \"",
+				"col2": "' value2",
+			},
+		},
+		{
+			name:   "replace from \" to ' in column",
+			column: "col1",
+			from:   "\"",
+			to:     "'",
+			input: map[string]interface{}{
+				"col1": "value1 \"",
+				"col2": "\" value2",
+			},
+			output: map[string]interface{}{
+				"col1": "value1 '",
+				"col2": "\" value2",
+			},
+		},
 	}
 
 	for _, tc := range testCases {

@@ -23,4 +23,7 @@ Column dob
 Column dob
 -> RegexExtract "(\d{2})\/(\d{2})\/(\d{4})" as day, month, year
 
-Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year
+Column json
+-> Replace "'" with "\""
+
+Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year, json

@@ -1,6 +1,9 @@
 package transformers
 
-import parser "csvshift/gen"
+import (
+	parser "csvshift/gen"
+	"strings"
+)
 
 type Transformer interface {
 	Apply(row map[string]interface{})
@@ -21,5 +24,10 @@ type RowTransformer struct {
 }
 
 func ExtractStringContent(str string) string {
-	return str[1 : len(str)-1]
+	s := str[1 : len(str)-1]
+
+	s = strings.ReplaceAll(s, `\"`, `"`)
+	s = strings.ReplaceAll(s, `\\`, `\`)
+
+	return s
 }

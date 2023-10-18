@@ -21,13 +21,11 @@ WITH: 'with';
 AS: 'as';
 COMMA: ',';
 ARROW: '->';
+QUOTE: '"';
+ESCAPE_SEQUENCE : '\\' . ;
 
+STRING: QUOTE (ESCAPE_SEQUENCE | ~[\\"])* QUOTE;
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]*;
-STRING
-    : '"' ~[\r\n"]* '"'
-    | '\'' ~[\r\n"]* '\''
-    ;
-
 WS: [ \t\r\n]+ -> skip;
 
 // Parser rules

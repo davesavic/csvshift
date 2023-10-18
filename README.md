@@ -16,10 +16,10 @@ csvshift --source large-file.csv --destination transformed-file.csv --path scrip
 ```
 #### Source.csv
 ```csv
-id,first_name,last_name,address,dob
-1,John,Smith       ,"123 Something Street, Anytown, Queensland 4209 Australia",1980-01-01
-2,Jane,Doe,"456 Something Street, Anytown, Queensland 4209 Australia",1950-01-01
-3,John,Doe,"789 Something Street, Anytown, Queensland 4209 Australia",1970-01-01
+id,first_name,last_name,address,dob,json
+1,John,Smith       ,"123 Something Street, Anytown, Queensland 4209 Australia",1980-01-01,{'key': 'value'}
+2,Jane,Doe,"456 Something Street, Anytown, Queensland 4209 Australia",1950-01-01,{'key': 'value'}
+3,John,Doe,"789 Something Street, Anytown, Queensland 4209 Australia",1970-01-01,{'key': 'value'}
 ```
 
 #### Script.csvshift
@@ -49,15 +49,18 @@ Column dob
 Column dob
 -> RegexExtract "(\d{2})\/(\d{2})\/(\d{4})" as day, month, year
 
-Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year
+Column json
+-> Replace "'" with "\""
+
+Output Columns id, full_name, street, city, state, postcode, country, dob, day, month, year, json
 ```
 
 #### Result.csv
 ```csv
-id,full_name,street,city,state,postcode,country,dob,day,month,year
-1,John Lmith,123 Something Street,Anytown,Queensland,4209,Australia,01/01/1980,01,01,1980
-2,Jane Doe,456 Something Street,Anytown,Queensland,4209,Australia,01/01/1950,01,01,1950
-3,John Doe,789 Something Street,Anytown,Queensland,4209,Australia,01/01/1970,01,01,1970
+id,full_name,street,city,state,postcode,country,dob,day,month,year,json
+1,John Lmith,123 Something Street,Anytown,Queensland,4209,Australia,01/01/1980,01,01,1980,"{""key"": ""value""}"
+2,Jane Doe,456 Something Street,Anytown,Queensland,4209,Australia,01/01/1950,01,01,1950,"{""key"": ""value""}"
+3,John Doe,789 Something Street,Anytown,Queensland,4209,Australia,01/01/1970,01,01,1970,"{""key"": ""value""}"
 ```
 
 ### Syntax
